@@ -10,8 +10,7 @@ class Header2 extends Component {
     }
 
     componentWillReceiveProps(state) {
-        // this.setState(state);
-        console.log('head2', this.state)
+        this.setState({config: state.config});
     }
 
     render() {

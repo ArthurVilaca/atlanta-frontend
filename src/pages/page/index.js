@@ -9,15 +9,16 @@ import Header2 from '../components/header-2';
 import './page.css';
 // import components from '../components/map.json'
 
-import components from '../components/GenericComponent';
+var components = require('../components/GenericComponent');
 
 class Page extends Component {
     constructor(props) {
         super(props);
+        console.log(components);
         this.state = {
             config: null,
             editingComponent: null,
-            components: components
+            components: components.default
         }
     }
 
@@ -25,14 +26,13 @@ class Page extends Component {
         this.setState({config: component});
     }
 
-    changeProperty = (name, value) => {
-        let Tag = components.filter((component) => {
-            return this.state.config.name == component.label
-        })[0]
-        console.log('tag', Tag);
-        Tag.configs[name].set = value;
-        this.setState({components: components})
-        console.log(this.state.components)
+    changeProperty = (value) => {
+        this.setState({
+            components: this.state.components.map(component => this.state.config.name === component.label
+              ? { ...component, configs: value }
+              : component
+            )
+        });
     }
 
     render() {

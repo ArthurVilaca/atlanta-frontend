@@ -62,16 +62,16 @@ class FooterVariant2 extends Component {
                                 <span class="big text-primary">Social media</span>
                                 <ul class="inline-list-xxs">
                                 <li>
-                                    <a class="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-instagram" href="#"></a>
+                                    <a class="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-instagram"></a>
                                 </li>
                                 <li>
-                                    <a class="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-facebook" href="#"></a>
+                                    <a class="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-facebook"></a>
                                 </li>
                                 <li>
-                                    <a class="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-twitter" href="#"></a>
+                                    <a class="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-twitter"></a>
                                 </li>
                                 <li>
-                                    <a class="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-google-plus" href="#"></a>
+                                    <a class="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-google-plus"></a>
                                 </li>
                                 </ul>
                             </div>
