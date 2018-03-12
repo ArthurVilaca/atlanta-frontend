@@ -1,0 +1,11 @@
+.content-page {
+    display: inline-block;
+    width: 80%;
+    float: left;
+}
+
+.content-page-title {
+    width: 100%;
+    padding: 20px;
+    
+}
