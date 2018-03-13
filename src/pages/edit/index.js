@@ -22,10 +22,8 @@ class Edit extends Component {
     }
 
     saveData = (data) => {
-        console.log(data);
-        console.log(this.state);
-        // this.props.changeProperty(this.state);
-        console.log('save');
+        this.setState(null);
+        this.props.saveData();
     }
 
     handleText1Change = (event) => {

@@ -19,7 +19,7 @@ class Header1 extends Component {
                 onClick={() => {
                     this.props.editComponent(this.state.config)
                 }}>
-                Hue 1
+                {this.state.config.text1}
             </div>
         );
     }

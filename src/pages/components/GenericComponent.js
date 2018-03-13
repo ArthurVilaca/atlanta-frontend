@@ -7,7 +7,7 @@ import Header2 from '../components/header-2';
 let components = [{
     id: 1, name: Header1, label: 'Header1', configs: {
         name: 'Header1',
-        text1: 'HUEHUE',
+        text1: 'cabedalho 1',
         backgroundColor: 'gray',
         minHeight: '200px',
         canEditBackgroundImage: false,
