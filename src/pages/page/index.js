@@ -87,7 +87,7 @@ class Page extends Component {
     }
 
     pushComponent = (component) => {
-        console.log(component);
+        component.id = this.state.components.length + 1;
         this.state.components.push(component);
         // this.setState({
         //     components: ...components.push(component);
@@ -110,14 +110,16 @@ class Page extends Component {
                             }} />
                     </div>
                 </div>
-                <div className="content-page">
+                <div
+                    className="content-page"
+                    onMouseEnter={this.handleMouseHover}
+                    onMouseLeave={this.handleMouseHover}
+                    >
                     {
                         this.state.components.map( (component) => {
                             const TagName = component.name;
                             return (
                                 <div key={component.id}
-                                    onMouseEnter={this.handleMouseHover}
-                                    onMouseLeave={this.handleMouseHover}
                                     >
                                     <TagName key={component.id} components={this.state.components} config={component.configs} editComponent={this.editComponent} />
                                     {

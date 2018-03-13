@@ -8,6 +8,10 @@ let components = [{
     id: 1, name: Header1, label: 'Header1', configs: {
         name: 'Header1',
         text1: 'cabedalho 1',
+        text2: 'cabedalho 1',
+        text3: 'cabedalho 1',
+        image1: 'cabedalho 1',
+        image2: 'cabedalho 1',
         backgroundColor: 'gray',
         minHeight: '200px',
         canEditBackgroundImage: false,
