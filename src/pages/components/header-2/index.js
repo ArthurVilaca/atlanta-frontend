@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 class Header2 extends Component {
     constructor(props) {
@@ -19,7 +19,7 @@ class Header2 extends Component {
                 onClick={() => {
                     this.props.editComponent(this.state.config)
                 }}>
-                Hue 2
+                {this.state.config.text1}
             </div>
         );
     }

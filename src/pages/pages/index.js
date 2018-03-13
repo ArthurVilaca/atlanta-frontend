@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import {GridList, GridTile} from 'material-ui/GridList';
 import Subheader from 'material-ui/Subheader';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -19,13 +17,13 @@ class Pages extends Component {
                 name: 'padariaDoJoao',
                 status: 'Publicado',
                 url: null,
-                preview: null
+                preview: 'https://make.wordpress.org/core/files/2016/01/customize-device-preview.gif'
             },{
                 id: 2,
                 name: 'padariaDoClaudio',
                 status: 'Publicado',
                 url: null,
-                preview: null
+                preview: 'http://www.letshost.ie/wp-content/uploads/LH-preview-inner.jpg'
             }],
         }
     }

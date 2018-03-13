@@ -2,19 +2,14 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
 import Edit from '../edit';
-
-import Header1 from '../components/header-1';
-import Header2 from '../components/header-2';
-
 import './page.css';
-// import components from '../components/map.json'
 
+import RaisedButton from 'material-ui/RaisedButton';
 var components = require('../components/GenericComponent');
 
 class Page extends Component {
     constructor(props) {
         super(props);
-        console.log(components);
         this.state = {
             config: null,
             editingComponent: null,
@@ -35,13 +30,26 @@ class Page extends Component {
         });
     }
 
+    publishSite = () => {
+        console.log('to publish')
+    }
+
     render() {
         if(!this.state.components) {
             return null;
         }
         return (
             <div >
-                <div className="content-page-title">Edição de Pagina</div>
+                <div className="content-page-title">
+                    <div className="publish-site-header">Edição de Pagina</div>
+                    <div className="publish-site-page">
+                        <RaisedButton label="Publicar Site"
+                            primary={true}
+                            onClick={() => {
+                                this.publishSite()
+                            }} />
+                    </div>
+                </div>
                 <div className="content-page">
                     {
                         this.state.components.map( (component) => {

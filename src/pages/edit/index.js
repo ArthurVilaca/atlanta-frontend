@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import { SketchPicker, HuePicker, AlphaPicker } from 'react-color';
+import { SketchPicker } from 'react-color';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -18,7 +18,19 @@ class Edit extends Component {
 
     handleBackgroundColor = (color) => {
         this.setState({ backgroundColor: color.hex });
-        this.props.changeProperty(this.state)
+        this.props.changeProperty(this.state);
+    }
+
+    saveData = (data) => {
+        console.log(data);
+        console.log(this.state);
+        // this.props.changeProperty(this.state);
+        console.log('save');
+    }
+
+    handleText1Change = (event) => {
+        this.state.text1 = event.target.value;
+        this.props.changeProperty(this.state);
     }
 
     render() {
@@ -38,15 +50,20 @@ class Edit extends Component {
 
                 {
                     this.state.text1 &&  <div className="prop-edit">
-                        <TextField hintText="Texto 1" />
+                        <TextField
+                            onChange={this.handleText1Change}
+                            className="text-field-edit"
+                            defaultValue={this.state.text1}
+                            floatingLabelText="Texto 1" />
                     </div>
                 }
 
-                <div>
+                <div className="item-edit">
                     <RaisedButton label="Salvar"
+                        className="sketch-picker"
                         primary={true}
                         onClick={() => {
-                            this.setState(null)
+                            this.saveData()
                         }} />
                 </div>
             </div>

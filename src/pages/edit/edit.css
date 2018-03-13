@@ -8,3 +8,17 @@
     min-height: 30px;
     width: 100%;
 }
+
+.sketch-picker {
+    margin: auto !important;
+    padding: 0px !important;
+}
+
+.item-edit {
+    width: 80%;
+    margin: auto;
+}
+
+.text-field-edit {
+    width: 80% !important;
+}
