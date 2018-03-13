@@ -3,3 +3,8 @@
     display: inline-block;
     background-color: lightgray;
 }
+
+.prop-edit {
+    min-height: 30px;
+    width: 100%;
+}

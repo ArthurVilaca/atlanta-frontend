@@ -7,43 +7,55 @@ import Header1 from '../components/header-1';
 import Header2 from '../components/header-2';
 
 import './page.css';
+// import components from '../components/map.json'
 
-let components = [{
-    id: 1, name: Header1, configs: {}
-}, {
-    id: 2, name: Header2, configs: {}
-}];
+var components = require('../components/GenericComponent');
 
 class Page extends Component {
     constructor(props) {
         super(props);
+        console.log(components);
         this.state = {
-            config: {},
-            edit: {}
+            config: null,
+            editingComponent: null,
+            components: components.default
         }
     }
 
-    editComponent(component) {
-        console.log(component);
-        // this.setState({edit: component});
-        console.log(this)
+    editComponent = (component, editingComponent) => {
+        this.setState({config: component});
+    }
+
+    changeProperty = (value) => {
+        this.setState({
+            components: this.state.components.map(component => this.state.config.name === component.label
+              ? { ...component, configs: value }
+              : component
+            )
+        });
     }
 
     render() {
+        if(!this.state.components) {
+            return null;
+        }
         return (
             <div >
                 <div className="content-page-title">Edição de Pagina</div>
                 <div className="content-page">
                     {
-                        components.map( (component) => {
+                        this.state.components.map( (component) => {
                             const TagName = component.name;
                             return (
-                                <TagName key={component.id} config={component} editComponent={this.editComponent} />
+                                <TagName key={component.id} components={this.state.components} config={component.configs} editComponent={this.editComponent} />
                             );
                         })
                     }
                 </div>
-                <Edit config={this.state.edit} />
+                {
+                    this.state.config && 
+                    <Edit config={this.state.config} changeProperty={this.changeProperty} />
+                }
             </div>
         );
     }

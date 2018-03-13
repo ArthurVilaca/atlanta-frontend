@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
-import './header-2.css';
-
 class Header2 extends Component {
     constructor(props) {
         super(props);
@@ -11,11 +9,15 @@ class Header2 extends Component {
         }
     }
 
+    componentWillReceiveProps(state) {
+        this.setState({config: state.config});
+    }
+
     render() {
         return (
-            <div className="content-header-2"
+            <div style={this.state.config}
                 onClick={() => {
-                    this.props.editComponent(this.state)
+                    this.props.editComponent(this.state.config)
                 }}>
                 Hue 2
             </div>

@@ -1,0 +1,15 @@
+.content-pages {
+    margin: auto;
+    width: 80%;
+    padding: 20px;
+}
+
+.site {
+    cursor: pointer;
+}
+
+.float-button-pages {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
