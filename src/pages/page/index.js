@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import Modal from 'react-modal';
 
-import Edit from '../edit';
-import './page.css';
-
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+
+import Edit from '../edit';
+import './page.css';
+import Service from '../../service';
 
 var components = require('../components/GenericComponent');
 var Allcomponents = require('../components/GenericComponent');
@@ -27,6 +28,7 @@ Modal.setAppElement(document.getElementById('root'));
 class Page extends Component {
     constructor(props) {
         super(props);
+        this.service = new Service();
         this.state = {
             config: null,
             editingComponent: null,
@@ -34,6 +36,17 @@ class Page extends Component {
             isHovering: false,
             modalIsOpen: false,
         }
+        this.loadPage();
+    }
+
+    loadPage = () => {
+        this.service.get('/paginas/' + this.props.match.params.id)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     editComponent = (component, editingComponent) => {
