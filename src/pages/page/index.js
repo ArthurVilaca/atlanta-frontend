@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
+import TextField from 'material-ui/TextField';
 
 import Edit from '../edit';
 import './page.css';
@@ -30,11 +31,16 @@ class Page extends Component {
         super(props);
         this.service = new Service();
         this.state = {
+            pageConfig: {
+                name: 'Pagina de teste',
+                urlPrefix: 'pageTest'
+            },
             config: null,
             editingComponent: null,
             components: components.default,
             isHovering: false,
             modalIsOpen: false,
+            modalConfigPage: false,
         }
         this.loadPage();
     }
@@ -106,15 +112,29 @@ class Page extends Component {
         // })
     }
 
+    openConfigsPage = () => {
+        this.setState({modalConfigPage: true});
+    }
+
+    closeConfigsPage = () => {
+        this.setState({modalConfigPage: false});
+    }
+
     render() {
         if(!this.state.components) {
             return null;
         }
+        const classes = this.state.isHovering ? '' : 'hide'
         return (
             <div >
                 <div className="content-page-title">
                     <div className="publish-site-header">Edição de Pagina</div>
                     <div className="publish-site-page">
+                        <RaisedButton label="Configurações"
+                            primary={true}
+                            onClick={() => {
+                                this.openConfigsPage()
+                            }} />
                         <RaisedButton label="Publicar Site"
                             primary={true}
                             onClick={() => {
@@ -139,7 +159,7 @@ class Page extends Component {
                                         <div>
                                             <FloatingActionButton
                                                 secondary={true}
-                                                className=""
+                                                className={classes}
                                                 onClick={() => {
                                                     this.addComponent(component.id)
                                                 }} >
@@ -193,6 +213,38 @@ class Page extends Component {
                                         );
                                     })
                                 }
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                </Modal>
+
+                <Modal
+                    isOpen={this.state.modalConfigPage}
+                    // onAfterOpen={this.afterOpenModal}
+                    // onRequestClose={this.closeModal}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                    >
+
+                    <div className="content-modal">
+                        <div className="modal-header">
+                            <div>Configurações da Pagina</div>
+                            <button onClick={this.closeConfigsPage}>Fechar</button>
+                        </div>
+                        <div className="modal-body">
+                            <div className="row">
+                                <div className="col-md-12">
+                                    <TextField
+                                        defaultValue={this.state.pageConfig.name}
+                                        hintText="Nome da pagina" />
+                                </div>
+                                <div className="col-md-12">
+                                    <TextField
+                                        defaultValue={this.state.pageConfig.urlPrefix}
+                                        hintText="Prefixo da URL" />
+                                </div>
                             </div>
                         </div>
                     </div>
