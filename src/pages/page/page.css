@@ -7,5 +7,40 @@
 .content-page-title {
     width: 100%;
     padding: 20px;
-    
+}
+
+.publish-site-page {
+    width: 20%;
+    display: inline-block;
+}
+
+.publish-site-header {
+    display: inline-block;
+    width: 80%;
+    text-align: center;
+    float: left;
+}
+
+.content-modal {
+    min-width: 600px;
+}
+
+.modal-header {
+    width: 100%;
+    padding: 20px;
+}
+
+.modal-body {
+    min-height: 300px;
+    min-width: 400px;
+}
+
+.preview-component {
+    height: 100px;
+    display: initial;
+}
+
+.hide {
+    opacity: 0;
+    transition: opacity 0.5s;
 }

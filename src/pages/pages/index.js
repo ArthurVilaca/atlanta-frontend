@@ -2,32 +2,46 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import {GridList, GridTile} from 'material-ui/GridList';
 import Subheader from 'material-ui/Subheader';
-import IconButton from 'material-ui/IconButton';
-import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
+import Service from '../../service';
 import './pages.css';
 
 class Pages extends Component {
     constructor(props) {
         super(props);
+        this.service = new Service();
         this.state = {
-            pages: [{
-                id: 1,
-                name: 'padariaDoJoao',
-                status: 'Publicado',
-                url: null,
-                preview: null
-            },{
-                id: 2,
-                name: 'padariaDoClaudio',
-                status: 'Publicado',
-                url: null,
-                preview: null
-            }],
+            pages: [],
         }
+        this.loadPages();
+    }
+
+    loadPages = () => {
+        this.service.get('/paginas')
+            .then((response) => {
+                console.log(response);
+                this.setState({
+                    pages: [{
+                        id: 1,
+                        name: 'padariaDoJoao',
+                        status: 'Publicado',
+                        url: null,
+                        preview: 'https://make.wordpress.org/core/files/2016/01/customize-device-preview.gif'
+                    },{
+                        id: 2,
+                        name: 'padariaDoClaudio',
+                        status: 'Publicado',
+                        url: null,
+                        preview: 'http://www.letshost.ie/wp-content/uploads/LH-preview-inner.jpg'
+                    }]
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     render() {

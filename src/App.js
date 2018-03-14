@@ -6,6 +6,7 @@ import './App.css';
 import Page from './pages/page';
 import Login from './pages/login';
 import Pages from './pages/pages';
+import RegisterDealer from './pages/register-dealer';
 
 class App extends Component {
   render() {
@@ -13,8 +14,10 @@ class App extends Component {
     return (
       <MuiThemeProvider>
         <div className="App">
-          { currentPath ===  "/" && <Redirect to={"/login"}/> }
+          { currentPath === "/" && <Redirect to={"/login"}/> }
           <Route exact path="/login" component={Login}/>
+          { currentPath === "/registrar" && <Redirect to={"/login"}/> }
+          <Route exact path="/registrar/revendedor" component={RegisterDealer}/>
           <Route exact path="/paginas" component={Pages}/>
           <Route exact path="/paginas/nova" component={Page}/>
           <Route exact path="/paginas/:id/editar" component={Page}/>
