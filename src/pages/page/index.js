@@ -64,7 +64,6 @@ class Page extends Component {
     }
 
     addComponent = (id) => {
-        console.log(id)
         this.openModal()
     }
 
@@ -116,12 +115,12 @@ class Page extends Component {
                     onMouseLeave={this.handleMouseHover}
                     >
                     {
-                        this.state.components.map( (component) => {
+                        this.state.components.map( (component, id) => {
                             const TagName = component.name;
                             return (
-                                <div key={component.id}
+                                <div key={id}
                                     >
-                                    <TagName key={component.id} components={this.state.components} config={component.configs} editComponent={this.editComponent} />
+                                    <TagName key={id} components={this.state.components} config={component.configs} editComponent={this.editComponent} />
                                     {
                                         this.state.isHovering &&
                                         <div>
@@ -159,27 +158,29 @@ class Page extends Component {
                             <button onClick={this.closeModal}>Fechar</button>
                         </div>
                         <div className="modal-body">
-                            {
-                                Allcomponents.default.map( (component) => {
-                                    const TagName = component.name;
-                                    return (
-                                        <div
-                                            key={component.id}
-                                            className="preview-component"
-                                            onClick={() => {
-                                                this.pushComponent(component)
-                                            }}
-                                            >
-                                            <TagName
-                                                key={component.id}
-                                                components={this.state.components}
-                                                config={component.configs}
-                                                editComponent={this.editComponent}
-                                                />
-                                        </div>
-                                    );
-                                })
-                            }
+                            <div className="row">
+                                {
+                                    Allcomponents.default.map( (component, id) => {
+                                        const TagName = component.name;
+                                        return (
+                                            <div
+                                                key={id}
+                                                className="col-md-4 preview-component"
+                                                onClick={() => {
+                                                    this.pushComponent(component)
+                                                }}
+                                                >
+                                                <TagName
+                                                    key={id}
+                                                    components={this.state.components}
+                                                    config={component.configs}
+                                                    editComponent={this.editComponent}
+                                                    />
+                                            </div>
+                                        );
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
 
