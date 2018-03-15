@@ -13,6 +13,7 @@ class Pages extends Component {
     constructor(props) {
         super(props);
         this.service = new Service();
+        this.service.setToken(localStorage.getItem('token'))
         this.state = {
             pages: [],
         }

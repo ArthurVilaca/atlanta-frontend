@@ -30,6 +30,7 @@ class Page extends Component {
     constructor(props) {
         super(props);
         this.service = new Service();
+        this.service.setToken(localStorage.getItem('token'))
         this.state = {
             pageConfig: {
                 name: 'Pagina de teste',

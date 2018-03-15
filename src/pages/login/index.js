@@ -20,8 +20,14 @@ class Login extends Component {
     doLogin() {
         this.service.post('/login', this.state)
             .then((response) => {
-                console.log(response);
-                this.props.history.push('/paginas' )
+                let myResponse = response.data;
+                if(myResponse.message.type == 'S') {
+                    localStorage.setItem('token', myResponse.dataset.token)
+                    this.props.history.push('/paginas' )
+                } else {
+                    console.log(myResponse);
+                    console.log('error');
+                }
             })
             .catch((error) => {
                 console.log(error);
