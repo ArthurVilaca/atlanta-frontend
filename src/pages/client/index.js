@@ -5,12 +5,13 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import Service from '../../service';
-import './register-dealer.css';
+import './client.css';
 
-class RegisterDealer extends Component {
+class Client extends Component {
     constructor(props) {
         super(props);
         this.service = new Service();
+        this.service.setToken(localStorage.getItem('token'))
         this.state = {
             username: '',
             name: '',
@@ -19,29 +20,14 @@ class RegisterDealer extends Component {
             phone: '',
             password: ''
         }
-    }
-
-    doRegisterDealer() {
-        this.service.post('/register/dealer', this.state)
-            .then((response) => {
-                let myResponse = response.data;
-                if(myResponse.message.type == 'S') {
-                    this.props.history.push('/paginas' )
-                } else {
-                    console.log(myResponse);
-                    console.log('error');
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        console.log(this.props.match.params.id)
     }
 
     render() {
         return (
             <div className="content-login">
                 <div>
-                    Cadastro de Revendedor
+                    Cadastro de Cliente
                 </div>
                 <form>
                     <div>
@@ -89,4 +75,4 @@ class RegisterDealer extends Component {
     }
 }
 
-export default withRouter(RegisterDealer)
+export default withRouter(Client)
