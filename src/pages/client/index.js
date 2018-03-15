@@ -15,12 +15,43 @@ class Client extends Component {
         this.state = {
             username: '',
             name: '',
-            email: '',
+            user_type: 'C',
             registration_code: '',
-            phone: '',
-            password: ''
+            password: '',
         }
         console.log(this.props.match.params.id)
+    }
+
+    handleChangeUserName = (event) => {
+        this.setState({username: event.target.value });
+    }
+
+    handleChangePassword = (event) => {
+        this.setState({password: event.target.value });
+    }
+
+    handleChangeRegistrationCode = (event) => {
+        this.setState({registration_code: event.target.value });
+    }
+
+    handleChangeName = (event) => {
+        this.setState({name: event.target.value });
+    }
+
+    doRegisterClient = () => {
+        this.service.post('/client', this.state)
+            .then((response) => {
+                let myResponse = response.data;
+                if(myResponse.message.type == 'S') {
+                    this.props.history.push('/paginas' )
+                } else {
+                    console.log(myResponse);
+                    console.log('error');
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     render() {
@@ -33,31 +64,25 @@ class Client extends Component {
                     <div>
                         <TextField
                             defaultValue={this.state.username}
+                            onChange={this.handleChangeUserName}
                             hintText="usuario" />
                     </div>
                     <div>
                         <TextField
                             defaultValue={this.state.name}
+                            onChange={this.handleChangeName}
                             hintText="Nome" />
                     </div>
                     <div>
                         <TextField
-                            defaultValue={this.state.email}
-                            hintText="Email" />
-                    </div>
-                    <div>
-                        <TextField
                             defaultValue={this.state.registration_code}
+                            onChange={this.handleChangeRegistrationCode}
                             hintText="CPF" />
                     </div>
                     <div>
                         <TextField
-                            defaultValue={this.state.phone}
-                            hintText="Telefone" />
-                    </div>
-                    <div>
-                        <TextField
                             defaultValue={this.state.password}
+                            onChange={this.handleChangePassword}
                             hintText="senha"
                             type="password" />
                     </div>
@@ -66,7 +91,7 @@ class Client extends Component {
                         <RaisedButton label="Cadastrar"
                             primary={true}
                             onClick={() => {
-                                this.doRegisterDealer()
+                                this.doRegisterClient()
                             }} />
                     </div>
                 </form>
