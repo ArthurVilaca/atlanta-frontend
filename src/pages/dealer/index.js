@@ -7,36 +7,28 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import Service from '../../service';
-import './pages.css';
+import './dealer.css';
 
-class Pages extends Component {
+class Dealer extends Component {
     constructor(props) {
         super(props);
         this.service = new Service();
         this.service.setToken(localStorage.getItem('token'))
         this.state = {
-            pages: [],
+            clients: [],
         }
-        this.loadPages();
+        this.loadClients();
     }
 
-    loadPages = () => {
-        this.service.get('/paginas')
+    loadClients = () => {
+        this.service.get('/clients')
             .then((response) => {
                 console.log(response);
                 this.setState({
-                    pages: [{
+                    clients: [{
                         id: 1,
                         name: 'padariaDoJoao',
-                        status: 'Publicado',
-                        url: null,
-                        preview: 'https://make.wordpress.org/core/files/2016/01/customize-device-preview.gif'
-                    },{
-                        id: 2,
-                        name: 'padariaDoClaudio',
-                        status: 'Publicado',
-                        url: null,
-                        preview: 'http://www.letshost.ie/wp-content/uploads/LH-preview-inner.jpg'
+                        status: 'Ativo',
                     }]
                 })
             })
@@ -50,18 +42,18 @@ class Pages extends Component {
             <div className="content-pages">
                 <GridList
                     cellHeight={180} >
-                    <Subheader>Sites</Subheader>
+                    <Subheader>Clientes</Subheader>
                     {
-                        this.state.pages.map((page) => (
+                        this.state.clients.map((client) => (
                             <GridTile
                                 className="site"
-                                key={page.id}
-                                title={page.name}
-                                subtitle={<span><b>{page.status}</b></span>}
+                                key={client.id}
+                                title={client.name}
+                                subtitle={<span><b>{client.status}</b></span>}
                                 onClick={() => {
-                                    this.props.history.push('/paginas/' + page.id + '/editar' )
+                                    this.props.history.push('/paginas/' + client.id + '/editar' )
                                 }}>
-                            <img src={page.preview} />
+                            {/* <img src={page.preview} /> */}
                         </GridTile>
                     ))}
                 </GridList>
@@ -70,7 +62,7 @@ class Pages extends Component {
                     secondary={true}
                     className="float-button-pages"
                     onClick={() => {
-                        this.props.history.push('/paginas/nova' )
+                        this.props.history.push('/clientes/novo' )
                     }} >
                     <ContentAdd />
                 </FloatingActionButton>
@@ -79,4 +71,4 @@ class Pages extends Component {
     }
 }
 
-export default withRouter(Pages)
+export default withRouter(Dealer)

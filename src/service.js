@@ -13,6 +13,10 @@ class Service {
         });
     }
 
+    setToken = (token) => {
+        this.state.Autorization = token;
+    }
+
     get = (url) => {
         return axios.get(url, { headers: this.state })
             .then((response) => {
