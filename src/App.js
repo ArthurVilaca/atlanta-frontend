@@ -27,6 +27,7 @@ class App extends Component {
           <Route exact path="/revendedor" component={Delaer}/>
           <Route exact path="/clientes" component={Clients}/>
           <Route exact path="/clientes/:id" component={Client}/>
+          <Route exact path="/clientes/:id/paginas" component={Pages}/>
         </div>
       </MuiThemeProvider>
     );

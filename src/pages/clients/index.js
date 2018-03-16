@@ -6,6 +6,8 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 
+import moment from 'moment';
+
 import Service from '../../service';
 import './clients.css';
 
@@ -25,7 +27,6 @@ class Clients extends Component {
             .then((response) => {
                 let myResponse = response.data;
                 this.setState({clients: myResponse.dataset.User.client})
-                console.log(this.state.clients)
             })
             .catch((error) => {
                 console.log(error);
@@ -47,7 +48,7 @@ class Clients extends Component {
                                 <CardText>
                                     CNPJ: { client.registration_code }
                                     <br />
-                                    {/* Data Registro: { moment(client.created_at).format('L') } */}
+                                    Data Registro: { moment(client.created_at).format('L') }
                                 </CardText>
                                 <CardActions>
                                     <FlatButton
@@ -58,7 +59,7 @@ class Clients extends Component {
                                     <FlatButton
                                         label="Paginas"
                                         onClick={() => {
-                                            // this.delete(client.id);
+                                            this.props.history.push('/clientes/' + client.id + '/paginas')
                                         }}
                                         />
                                 </CardActions>
