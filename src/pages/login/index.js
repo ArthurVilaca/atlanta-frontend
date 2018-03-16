@@ -21,9 +21,14 @@ class Login extends Component {
         this.service.post('/login', this.state)
             .then((response) => {
                 let myResponse = response.data;
-                if(myResponse.message.type == 'S') {
+                if(myResponse.message.type === 'S') {
                     localStorage.setItem('token', myResponse.dataset.token)
-                    this.props.history.push('/paginas' )
+                    myResponse.dataset.user_type = 'D'
+                    if(myResponse.dataset.user_type === 'D') {
+                        this.props.history.push('/clientes' )
+                    } else if(myResponse.dataset.user_type === 'C') {
+                        this.props.history.push('/paginas' )
+                    }
                 } else {
                     console.log(myResponse);
                     console.log('error');

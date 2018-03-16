@@ -9,6 +9,7 @@ import Pages from './pages/pages';
 import RegisterDealer from './pages/register-dealer';
 import Delaer from './pages/dealer';
 import Client from './pages/client';
+import Clients from './pages/clients';
 
 class App extends Component {
   render() {
@@ -24,7 +25,9 @@ class App extends Component {
           <Route exact path="/paginas/nova" component={Page}/>
           <Route exact path="/paginas/:id/editar" component={Page}/>
           <Route exact path="/revendedor" component={Delaer}/>
+          <Route exact path="/clientes" component={Clients}/>
           <Route exact path="/clientes/:id" component={Client}/>
+          <Route exact path="/clientes/:id/paginas" component={Pages}/>
         </div>
       </MuiThemeProvider>
     );

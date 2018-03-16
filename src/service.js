@@ -3,7 +3,7 @@ import axios from 'axios';
 class Service {
     constructor() {
         this.state = {
-            'Autorization': ''
+            'token': ''
         }
     }
 
@@ -14,7 +14,7 @@ class Service {
     }
 
     setToken = (token) => {
-        this.state.Autorization = token;
+        this.state.token = token;
     }
 
     get = (url) => {

@@ -14,18 +14,17 @@ class RegisterDealer extends Component {
         this.state = {
             username: '',
             name: '',
-            email: '',
+            user_type: 'D',
             registration_code: '',
-            phone: '',
             password: ''
         }
     }
 
     doRegisterDealer() {
-        this.service.post('/register/dealer', this.state)
+        this.service.post('/dealer', this.state)
             .then((response) => {
                 let myResponse = response.data;
-                if(myResponse.message.type == 'S') {
+                if(myResponse.message.type === 'S') {
                     this.props.history.push('/paginas' )
                 } else {
                     console.log(myResponse);
@@ -35,6 +34,22 @@ class RegisterDealer extends Component {
             .catch((error) => {
                 console.log(error);
             })
+    }
+
+    handleChangeUserName = (event) => {
+        this.setState({username: event.target.value });
+    }
+
+    handleChangePassword = (event) => {
+        this.setState({password: event.target.value });
+    }
+
+    handleChangeRegistrationCode = (event) => {
+        this.setState({registration_code: event.target.value });
+    }
+
+    handleChangeName = (event) => {
+        this.setState({name: event.target.value });
     }
 
     render() {
@@ -47,31 +62,25 @@ class RegisterDealer extends Component {
                     <div>
                         <TextField
                             defaultValue={this.state.username}
+                            onChange={this.handleChangeUserName}
                             hintText="usuario" />
                     </div>
                     <div>
                         <TextField
                             defaultValue={this.state.name}
+                            onChange={this.handleChangeName}
                             hintText="Nome" />
                     </div>
                     <div>
                         <TextField
-                            defaultValue={this.state.email}
-                            hintText="Email" />
-                    </div>
-                    <div>
-                        <TextField
                             defaultValue={this.state.registration_code}
+                            onChange={this.handleChangeRegistrationCode}
                             hintText="CPF" />
                     </div>
                     <div>
                         <TextField
-                            defaultValue={this.state.phone}
-                            hintText="Telefone" />
-                    </div>
-                    <div>
-                        <TextField
                             defaultValue={this.state.password}
+                            onChange={this.handleChangePassword}
                             hintText="senha"
                             type="password" />
                     </div>
