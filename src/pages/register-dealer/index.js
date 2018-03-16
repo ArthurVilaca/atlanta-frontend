@@ -11,7 +11,6 @@ class RegisterDealer extends Component {
     constructor(props) {
         super(props);
         this.service = new Service();
-        this.service.setToken(localStorage.getItem('token'))
         this.state = {
             username: '',
             name: '',
@@ -25,7 +24,7 @@ class RegisterDealer extends Component {
         this.service.post('/dealer', this.state)
             .then((response) => {
                 let myResponse = response.data;
-                if(myResponse.message.type == 'S') {
+                if(myResponse.message.type === 'S') {
                     this.props.history.push('/paginas' )
                 } else {
                     console.log(myResponse);

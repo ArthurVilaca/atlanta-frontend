@@ -15,11 +15,32 @@ class Client extends Component {
         this.state = {
             username: '',
             name: '',
+            password: '',
             user_type: 'C',
             registration_code: '',
-            password: '',
+            company_branch: '',
+            sale_plan: 'Basic',
         }
-        console.log(this.props.match.params.id)
+        if(this.props.match.params.id !== 'novo') {
+            this.loadclient()
+        }
+    }
+
+    loadclient = () => {
+        this.service.get('/client/' + this.props.match.params.id)
+            .then((response) => {
+                console.log(response)
+                if(response.data.message.type === "S") {
+                    this.setState({name: response.data.dataset.user.name})
+                    this.setState({username: response.data.dataset.user.username})
+                    this.setState({registration_code: response.data.dataset.client.registration_code})
+                    this.setState({company_branch: response.data.dataset.client.company_branch})
+                    console.log(this.state)
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     handleChangeUserName = (event) => {
@@ -38,20 +59,40 @@ class Client extends Component {
         this.setState({name: event.target.value });
     }
 
+    handleChangeCompanyBranch = (event) => {
+        this.setState({company_branch: event.target.value });
+    }
+
     doRegisterClient = () => {
-        this.service.post('/client', this.state)
-            .then((response) => {
-                let myResponse = response.data;
-                if(myResponse.message.type == 'S') {
-                    this.props.history.push('/paginas' )
-                } else {
-                    console.log(myResponse);
-                    console.log('error');
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        if(this.props.match.params.id !== 'novo') {
+            this.service.put('/client/' + this.props.match.params.id, this.state)
+                .then((response) => {
+                    let myResponse = response.data;
+                    if(myResponse.message.type === 'S') {
+                        this.props.history.push('/clientes' )
+                    } else {
+                        console.log(myResponse);
+                        console.log('error');
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        } else {
+            this.service.post('/client', this.state)
+                .then((response) => {
+                    let myResponse = response.data;
+                    if(myResponse.message.type === 'S') {
+                        this.props.history.push('/clientes' )
+                    } else {
+                        console.log(myResponse);
+                        console.log('error');
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
     }
 
     render() {
@@ -77,7 +118,7 @@ class Client extends Component {
                         <TextField
                             defaultValue={this.state.registration_code}
                             onChange={this.handleChangeRegistrationCode}
-                            hintText="CPF" />
+                            hintText="CNPJ" />
                     </div>
                     <div>
                         <TextField
@@ -88,7 +129,14 @@ class Client extends Component {
                     </div>
 
                     <div>
-                        <RaisedButton label="Cadastrar"
+                        <TextField
+                            defaultValue={this.state.company_branch}
+                            onChange={this.handleChangeCompanyBranch}
+                            hintText="Nome da Empresa" />
+                    </div>
+
+                    <div>
+                        <RaisedButton label="Salvar"
                             primary={true}
                             onClick={() => {
                                 this.doRegisterClient()
