@@ -44,3 +44,11 @@
     opacity: 0;
     transition: opacity 0.5s;
 }
+
+.right {
+    float: right;
+}
+
+.inline {
+    display: inline-block;
+}

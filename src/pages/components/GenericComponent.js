@@ -1,7 +1,7 @@
 import Header1 from '../components/header-1';
 import Header2 from '../components/header-2';
 // import AlbumGallery from '../components/album-gallery';
-// import FooterVariant1 from '../components/footer-variant-1';
+import FooterVariant1 from '../components/footer-variant-1';
 // import FooterVariant2 from '../components/footer-variant-2';
 
 let components = [{
@@ -13,7 +13,7 @@ let components = [{
         image1: 'cabedalho 1',
         image2: 'cabedalho 1',
         backgroundColor: 'gray',
-        minHeight: '200px',
+        height: '200px',
         canEditBackgroundImage: false,
         canEditBackgroundColor: false
     }
@@ -22,7 +22,16 @@ let components = [{
         name: 'Header2',
         text1: 'HUEHUE',
         backgroundColor: 'red',
-        minHeight: '200px',
+        height: '200px',
+        canEditBackgroundImage: false,
+        canEditBackgroundColor: false
+    }
+},{
+    id: 3, name: FooterVariant1, label: 'FooterVariant1', configs: {
+        name: 'FooterVariant1',
+        text1: 'HUEHUE',
+        // backgroundColor: 'red',
+        height: '200px',
         canEditBackgroundImage: false,
         canEditBackgroundColor: false
     }
