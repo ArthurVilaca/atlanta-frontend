@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Checkbox from 'material-ui/Checkbox';
 
 import Service from '../../service';
 import './login.css';
@@ -49,39 +50,48 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="content-login">
-                <form>
-                    <div>
+            <div>
+                <div className="login-wrapper">
+                    <div className="login-fields">
+                        <h3>Login <a href="">Esqueceu sua senha?</a></h3>
                         <TextField
+                            id="name"
                             onChange={this.handleChangeUserName}
                             defaultValue={this.state.username}
-                            hintText="usuario" />
-                    </div>
-
-                    <div>
+                            floatingLabelText="usuario"
+                            fullWidth={true}
+                        />
                         <TextField
+                            id="pass"
                             onChange={this.handleChangePassword}
                             defaultValue={this.state.password}
-                            hintText="senha"
-                            type="password" />
-                    </div>
+                            floatingLabelText="senha"
+                            fullWidth={true}
+                        />
+                        <div className="pt20">
+                            <Checkbox
+                                label="Lembrar"
+                            />
+                        </div>
+                        <div className="pt20">
+                            <RaisedButton
+                                label="Login"
+                                onClick={() => {
+                                    this.doLogin()
+                                }}
+                                primary={true} fullWidth={true}/>
+                        </div>
 
-                    <div>
-                        <RaisedButton label="Login"
-                            primary={true}
-                            onClick={() => {
-                                this.doLogin()
-                            }} />
+                        <div className="pt20">
+                            <RaisedButton
+                                label="Quero ser um revendedor"
+                                onClick={() => {
+                                    this.props.history.push('/registrar/revendedor' )
+                                }}
+                                primary={true} fullWidth={true}/>
+                        </div>
                     </div>
-
-                    <div>
-                        <RaisedButton label="Quero ser um revendedor"
-                            primary={true}
-                            onClick={() => {
-                                this.props.history.push('/registrar/revendedor' )
-                            }} />
-                    </div>
-                </form>
+                </div>
             </div>
         );
     }

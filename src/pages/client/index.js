@@ -97,52 +97,65 @@ class Client extends Component {
 
     render() {
         return (
-            <div className="content-login">
-                <div>
-                    Cadastro de Cliente
-                </div>
-                <form>
-                    <div>
+            <div>
+                <div className="login-wrapper">
+                    <div className="login-fields">
+                        <h3>Cadastro de Cliente</h3>
                         <TextField
+                            id="firs-name"
+                            floatingLabelText="Usuario"
                             defaultValue={this.state.username}
                             onChange={this.handleChangeUserName}
-                            hintText="usuario" />
-                    </div>
-                    <div>
+                            fullWidth={true}
+                            />
                         <TextField
+                            id="last-name"
+                            floatingLabelText="Nome do Cliente"
                             defaultValue={this.state.name}
                             onChange={this.handleChangeName}
-                            hintText="Nome" />
-                    </div>
-                    <div>
+                            fullWidth={true}
+                            />
                         <TextField
-                            defaultValue={this.state.registration_code}
-                            onChange={this.handleChangeRegistrationCode}
-                            hintText="CNPJ" />
-                    </div>
-                    <div>
-                        <TextField
-                            defaultValue={this.state.password}
-                            onChange={this.handleChangePassword}
-                            hintText="senha"
-                            type="password" />
-                    </div>
-
-                    <div>
-                        <TextField
+                            id="last-name"
+                            floatingLabelText="Nome da Empresa"
                             defaultValue={this.state.company_branch}
                             onChange={this.handleChangeCompanyBranch}
-                            hintText="Nome da Empresa" />
-                    </div>
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="client-name"
+                            floatingLabelText="Nome"
+                            defaultValue={this.state.name}
+                            onChange={this.handleChangeName}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="CNPj"
+                            defaultValue={this.state.registration_code}
+                            onChange={this.handleChangeRegistrationCode}
+                            floatingLabelText="CNPj"
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="pass"
+                            defaultValue={this.state.password}
+                            onChange={this.handleChangePassword}
+                            floatingLabelText="Password"
+                            fullWidth={true}
+                            type="password"
+                            />
 
-                    <div>
-                        <RaisedButton label="Salvar"
-                            primary={true}
-                            onClick={() => {
-                                this.doRegisterClient()
-                            }} />
+                        <div className="pt20">
+                            <RaisedButton
+                                label="Salvar"
+                                primary={true}
+                                onClick={() => {
+                                    this.doRegisterClient()
+                                }}
+                                fullWidth={true}/>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         );
     }

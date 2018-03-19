@@ -25,7 +25,7 @@ class RegisterDealer extends Component {
             .then((response) => {
                 let myResponse = response.data;
                 if(myResponse.message.type === 'S') {
-                    this.props.history.push('/paginas' )
+                    this.props.history.push('/login' )
                 } else {
                     console.log(myResponse);
                     console.log('error');
@@ -54,45 +54,51 @@ class RegisterDealer extends Component {
 
     render() {
         return (
-            <div className="content-login">
-                <div>
-                    Cadastro de Revendedor
-                </div>
-                <form>
-                    <div>
+            <div>
+                <div className="login-wrapper">
+                    <div className="login-fields">
+                        <h3>Cadastro de Revendedor</h3>
                         <TextField
+                            id="firs-name"
+                            floatingLabelText="Usuario"
                             defaultValue={this.state.username}
                             onChange={this.handleChangeUserName}
-                            hintText="usuario" />
-                    </div>
-                    <div>
+                            fullWidth={true}
+                            />
                         <TextField
+                            id="last-name"
+                            floatingLabelText="Nome"
                             defaultValue={this.state.name}
                             onChange={this.handleChangeName}
-                            hintText="Nome" />
-                    </div>
-                    <div>
+                            fullWidth={true}
+                            />
                         <TextField
+                            id="CPF"
                             defaultValue={this.state.registration_code}
                             onChange={this.handleChangeRegistrationCode}
-                            hintText="CPF" />
-                    </div>
-                    <div>
+                            floatingLabelText="CPF"
+                            fullWidth={true}
+                            />
                         <TextField
+                            id="pass"
                             defaultValue={this.state.password}
                             onChange={this.handleChangePassword}
-                            hintText="senha"
-                            type="password" />
-                    </div>
+                            floatingLabelText="Password"
+                            fullWidth={true}
+                            type="password"
+                            />
 
-                    <div>
-                        <RaisedButton label="Cadastrar"
-                            primary={true}
-                            onClick={() => {
-                                this.doRegisterDealer()
-                            }} />
+                        <div className="pt20">
+                            <RaisedButton
+                                label="Registrar"
+                                primary={true}
+                                onClick={() => {
+                                    this.doRegisterDealer()
+                                }}
+                                fullWidth={true}/>
+                        </div>
                     </div>
-                </form>
+                </div>
             </div>
         );
     }

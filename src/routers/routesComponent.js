@@ -1,0 +1,38 @@
+import React, {Component} from 'react';
+import {Route, Redirect} from 'react-router-dom';
+
+// defaults
+import Home from '../pages/home.js';
+
+// projects
+import Login from '../pages/login/index.js';
+import Page from '../pages/page';
+import Pages from '../pages/pages';
+import RegisterDealer from '../pages/register-dealer';
+import Delaer from '../pages/dealer';
+import Client from '../pages/client';
+import Clients from '../pages/clients';
+
+
+class RoutesComponent extends Component {
+  render() {
+    const currentPath = window.location.pathname;
+    return (
+      <div>
+        <Route exact path="/Default" component={Home}/>
+        <Route exact path="/login" component={Login}/>
+        { currentPath === "/registrar" && <Redirect to={"/login"}/> }
+        <Route exact path="/registrar/revendedor" component={RegisterDealer}/>
+        <Route exact path="/paginas" component={Pages}/>
+        <Route exact path="/paginas/nova" component={Page}/>
+        <Route exact path="/paginas/:id/editar" component={Page}/>
+        <Route exact path="/revendedor" component={Delaer}/>
+        <Route exact path="/clientes" component={Clients}/>
+        <Route exact path="/clientes/:id" component={Client}/>
+        <Route exact path="/clientes/:id/paginas" component={Pages}/>
+      </div>
+    );
+  }
+}
+
+export default RoutesComponent;

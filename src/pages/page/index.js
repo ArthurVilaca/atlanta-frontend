@@ -188,8 +188,9 @@ class Page extends Component {
 
                     <div className="content-modal">
                         <div className="modal-header">
-                            <div>Seleção de Componente</div>
-                            <button onClick={this.closeModal}>Fechar</button>
+                            <div className="inline">Seleção de Componente</div>
+                            <i onClick={this.closeModal}
+                                className="material-icons right">close</i>
                         </div>
                         <div className="modal-body">
                             <div className="row">
@@ -231,8 +232,9 @@ class Page extends Component {
 
                     <div className="content-modal">
                         <div className="modal-header">
-                            <div>Configurações da Pagina</div>
-                            <button onClick={this.closeConfigsPage}>Fechar</button>
+                            <div className="inline">Configurações da Pagina</div>
+                            <i onClick={this.closeConfigsPage}
+                                className="material-icons right">close</i>
                         </div>
                         <div className="modal-body">
                             <div className="row">
@@ -247,6 +249,12 @@ class Page extends Component {
                                         hintText="Prefixo da URL" />
                                 </div>
                             </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button"
+                                class="btn btn-primary"
+                                onClick={this.closeConfigsPage}
+                                >Salvar</button>
                         </div>
                     </div>
 

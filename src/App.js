@@ -1,35 +1,41 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import SidebarMenuRouters from './routers/routers.js';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import './App.css';
-import Page from './pages/page';
-import Login from './pages/login';
-import Pages from './pages/pages';
-import RegisterDealer from './pages/register-dealer';
-import Delaer from './pages/dealer';
-import Client from './pages/client';
-import Clients from './pages/clients';
+import './static/css/App.css';
+import './static/css/vendor-styles.css';
+
+import Header from './containers/header.js';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: '#258df2',
+    accent1Color: '#40c741',
+  }
+});
 
 class App extends Component {
+
+  isSpecificPage(route) {
+    const routes = ['/login', '/registrar/revendedor']
+    return routes.indexOf(route) > -1;
+  }
+
   render() {
     const currentPath = window.location.pathname;
     return (
-      <MuiThemeProvider>
-        <div className="App">
-          { currentPath === "/" && <Redirect to={"/login"}/> }
-          <Route exact path="/login" component={Login}/>
-          { currentPath === "/registrar" && <Redirect to={"/login"}/> }
-          <Route exact path="/registrar/revendedor" component={RegisterDealer}/>
-          <Route exact path="/paginas" component={Pages}/>
-          <Route exact path="/paginas/nova" component={Page}/>
-          <Route exact path="/paginas/:id/editar" component={Page}/>
-          <Route exact path="/revendedor" component={Delaer}/>
-          <Route exact path="/clientes" component={Clients}/>
-          <Route exact path="/clientes/:id" component={Client}/>
-          <Route exact path="/clientes/:id/paginas" component={Pages}/>
-        </div>
-      </MuiThemeProvider>
+      <div>
+        <MuiThemeProvider muiTheme={muiTheme}>
+          <div>
+            { !this.isSpecificPage(currentPath) && 
+                <Header />
+            }
+            <SidebarMenuRouters />
+          </div>
+        </MuiThemeProvider>
+      </div>
+
     );
   }
 }
