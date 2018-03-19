@@ -29,13 +29,11 @@ class Client extends Component {
     loadclient = () => {
         this.service.get('/client/' + this.props.match.params.id)
             .then((response) => {
-                console.log(response)
                 if(response.data.message.type === "S") {
                     this.setState({name: response.data.dataset.user.name})
                     this.setState({username: response.data.dataset.user.username})
                     this.setState({registration_code: response.data.dataset.client.registration_code})
                     this.setState({company_branch: response.data.dataset.client.company_branch})
-                    console.log(this.state)
                 }
             })
             .catch((error) => {
@@ -69,7 +67,7 @@ class Client extends Component {
                 .then((response) => {
                     let myResponse = response.data;
                     if(myResponse.message.type === 'S') {
-                        this.props.history.push('/clientes' )
+                        window.location.assign('/clientes')
                     } else {
                         console.log(myResponse);
                         console.log('error');
@@ -83,7 +81,7 @@ class Client extends Component {
                 .then((response) => {
                     let myResponse = response.data;
                     if(myResponse.message.type === 'S') {
-                        this.props.history.push('/clientes' )
+                        window.location.assign('/clientes')
                     } else {
                         console.log(myResponse);
                         console.log('error');
@@ -102,7 +100,7 @@ class Client extends Component {
                     <div className="login-fields">
                         <h3>Cadastro de Cliente</h3>
                         <TextField
-                            id="firs-name"
+                            id="user-name"
                             floatingLabelText="Usuario"
                             defaultValue={this.state.username}
                             onChange={this.handleChangeUserName}
@@ -116,17 +114,10 @@ class Client extends Component {
                             fullWidth={true}
                             />
                         <TextField
-                            id="last-name"
+                            id="company-name"
                             floatingLabelText="Nome da Empresa"
                             defaultValue={this.state.company_branch}
                             onChange={this.handleChangeCompanyBranch}
-                            fullWidth={true}
-                            />
-                        <TextField
-                            id="client-name"
-                            floatingLabelText="Nome"
-                            defaultValue={this.state.name}
-                            onChange={this.handleChangeName}
                             fullWidth={true}
                             />
                         <TextField
