@@ -29,28 +29,14 @@ class FooterVariant1 extends Component {
                             </div>
                             <p>Novi Builder is a perfect solution for everyone who wants to establish a stunningly looking website with lots of useful functions and without extra coding.</p>
                             <div className="group-sm group-middle">
-                            <span className="big text-primary">Social media</span>
-                            <ul className="inline-list-xxs">
-                                <li>
-                                <a className="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-instagram" href="#"></a>
-                                </li>
-                                <li>
-                                <a className="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-facebook" href="#"></a>
-                                </li>
-                                <li>
-                                <a className="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-twitter" href="#"></a>
-                                </li>
-                                <li>
-                                <a className="icon novi-icon icon-xxs icon-circle icon-trout-outline icon-effect-1 fa fa-google-plus" href="#"></a>
-                                </li>
-                            </ul>
+                                <span className="big text-primary">Social media</span>
                             </div>
                         </div>
                         <div className="col-md-6 col-lg-4">
                             <h4>Instagram feed</h4>
                             <div className="row spacing-10 instafeed" data-instafeed-user="25025320" data-instafeed-get="tagged" data-instafeed-tagname="tm_business_ui_kit" data-instafeed-sort="most-liked" data-lightgallery="group">
                                 <div className="col-4" data-instafeed-item="">
-                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" href="#" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
+                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
                                     <div className="caption">
                                     <ul className="list-inline inline-list-xxs">
                                         <li><span className="novi-icon icon mdi mdi-heart"></span><span data-likes-count="text"></span></li>
@@ -60,7 +46,7 @@ class FooterVariant1 extends Component {
                                 </div>
                                 </div>
                                 <div className="col-4" data-instafeed-item="">
-                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" href="#" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
+                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
                                     <div className="caption">
                                     <ul className="list-inline inline-list-xxs">
                                         <li><span className="novi-icon icon mdi mdi-heart"></span><span data-likes-count="text"></span></li>
@@ -70,7 +56,7 @@ class FooterVariant1 extends Component {
                                 </div>
                                 </div>
                                 <div className="col-4" data-instafeed-item="">
-                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" href="#" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
+                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
                                     <div className="caption">
                                     <ul className="list-inline inline-list-xxs">
                                         <li><span className="novi-icon icon mdi mdi-heart"></span><span data-likes-count="text"></span></li>
@@ -80,7 +66,7 @@ class FooterVariant1 extends Component {
                                 </div>
                                 </div>
                                 <div className="col-4" data-instafeed-item="">
-                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" href="#" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
+                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
                                     <div className="caption">
                                     <ul className="list-inline inline-list-xxs">
                                         <li><span className="novi-icon icon mdi mdi-heart"></span><span data-likes-count="text"></span></li>
@@ -90,7 +76,7 @@ class FooterVariant1 extends Component {
                                 </div>
                                 </div>
                                 <div className="col-4" data-instafeed-item="">
-                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" href="#" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
+                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
                                     <div className="caption">
                                     <ul className="list-inline inline-list-xxs">
                                         <li><span className="novi-icon icon mdi mdi-heart"></span><span data-likes-count="text"></span></li>
@@ -100,7 +86,7 @@ class FooterVariant1 extends Component {
                                 </div>
                                 </div>
                                 <div className="col-4" data-instafeed-item="">
-                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" href="#" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
+                                <div className="thumbnail-instafeed"><a className="instagram-link" data-lightgallery="item" data-images-standard_resolution-url="href"><img className="instagram-image" src="images/_blank.png" alt="" data-images-standard_resolution-url="src"/></a>
                                     <div className="caption">
                                     <ul className="list-inline inline-list-xxs">
                                         <li><span className="novi-icon icon mdi mdi-heart"></span><span data-likes-count="text"></span></li>
