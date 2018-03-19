@@ -250,9 +250,9 @@ class Page extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div class="modal-footer">
+                        <div className="modal-footer">
                             <button type="button"
-                                class="btn btn-primary"
+                                className="btn btn-primary"
                                 onClick={this.closeConfigsPage}
                                 >Salvar</button>
                         </div>
