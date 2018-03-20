@@ -26,7 +26,6 @@ class AvatarDropdown extends Component {
   signOut = () => {
     localStorage.removeItem('token')
     window.location.assign('/login')
-    // window.location('/login')
   }
 
   render() {
@@ -49,11 +48,14 @@ class AvatarDropdown extends Component {
           onRequestChange={this.handleOnRequestChange}
         >
           <MenuItem
-            primaryText="View Profile"
+            primaryText="Meu Perfil"
+            onClick={() => {
+              window.location.assign('/meu-perfil')
+            }}
             leftIcon={<i className="material-icons">account_circle</i>} />
           <Divider />
           <MenuItem
-            primaryText="Sign Out"
+            primaryText="Sair"
             onClick={() => {
               this.signOut()
             }}

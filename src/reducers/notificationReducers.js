@@ -6,17 +6,17 @@ export default function () {
   return [
     {
       id: 1,
-      name: 'Bruce Mann',
+      name: 'Cliente 1',
       avatar: '',
-      detail: 'Sent a review request to Amanda Nunes',
+      detail: 'Pagamento de mensalidade realizado com sucesso!',
       time: moment().startOf('day').fromNow().toLocaleString(),
       read: false
     },
     {
       id: 2,
-      name: 'Henry J',
+      name: 'Cliente 2',
       avatar: img1,
-      detail: 'Sent a review request to Amanda Nunes',
+      detail: 'Boleto em atraso!',
       time: moment().startOf('day').fromNow().toLocaleString(),
       read: true
     },
@@ -35,70 +35,6 @@ export default function () {
       time: moment().startOf('day').fromNow().toLocaleString(),
       read: true,
       warning: true
-    },
-    {
-      id: 5,
-      name: 'Henry J',
-      avatar: img2,
-      detail: 'Sent a review request to Amanda Nunes',
-      time: moment().startOf('day').fromNow().toLocaleString(),
-      read: true
-    },
-    {
-      id: 6,
-      icon: 'fa fa-user-times',
-      detail: '7 Subscrption plan not renewed!',
-      time: moment().startOf('day').fromNow().toLocaleString(),
-      read: true,
-      danger: true
-    },
-    {
-      id: 7,
-      name: 'Bruce Mann',
-      avatar: '',
-      detail: 'Sent a review request to Amanda Nunes',
-      time: moment().startOf('day').fromNow().toLocaleString(),
-      read: false
-    },
-    {
-      id: 8,
-      name: 'Henry J',
-      avatar: img1,
-      detail: 'Sent a review request to Amanda Nunes',
-      time: moment().startOf('day').fromNow().toLocaleString(),
-      read: true
-    },
-    {
-      id: 9,
-      icon: 'fa fa-star',
-      detail: 'Our average rating goes up!',
-      time: moment().startOf('day').fromNow().toLocaleString(),
-      read: true,
-      success: true
-    },
-    {
-      id: 10,
-      icon: 'fa fa-exclamation-triangle',
-      detail: 'Server load is 95%, trying to reduce it!',
-      time: moment().startOf('day').fromNow().toLocaleString(),
-      read: true,
-      warning: true
-    },
-    {
-      id: 11,
-      name: 'Henry J',
-      avatar: img2,
-      detail: 'Sent a review request to Amanda Nunes',
-      time: moment().startOf('day').fromNow().toLocaleString(),
-      read: true
-    },
-    {
-      id: 12,
-      icon: 'fa fa-user-times',
-      detail: '7 Subscrption plan not renewed!',
-      time: moment().startOf('day').fromNow().toLocaleString(),
-      read: true,
-      danger: true
     },
   ]
 }

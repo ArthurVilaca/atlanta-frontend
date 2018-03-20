@@ -62,7 +62,7 @@ class Notification extends Component {
           <i className="fa fa-flash"></i>
         </button>
         <div className={toggleNotification}>
-          <h6>Latest Activities</h6>
+          <h6>Ultimas Atualizações</h6>
           {this.showAllNotifications()}
         </div>
       </div>
