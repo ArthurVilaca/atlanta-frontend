@@ -193,14 +193,14 @@ class Page extends Component {
                                 className="material-icons right">close</i>
                         </div>
                         <div className="modal-body">
-                            <div className="row">
+                            <div className="">
                                 {
                                     Allcomponents.default.map( (component, id) => {
                                         const TagName = component.name;
                                         return (
                                             <div
                                                 key={id}
-                                                className="col-md-4 preview-component"
+                                                className="preview-component"
                                                 onClick={() => {
                                                     this.pushComponent(component)
                                                 }}
