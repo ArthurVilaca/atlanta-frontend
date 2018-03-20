@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
@@ -10,7 +11,7 @@ import avatarImage from '../img/user12.jpg';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-export default class AvatarDropdown extends Component {
+class AvatarDropdown extends Component {
   state = {
     valueSingle: '3',
     valueMultiple: ['3', '5'],
@@ -22,8 +23,10 @@ export default class AvatarDropdown extends Component {
     });
   }
 
-
-
+  signOut = () => {
+    localStorage.removeItem('token')
+    window.location.assign('/login')
+  }
 
   render() {
     const style= {
@@ -44,15 +47,24 @@ export default class AvatarDropdown extends Component {
           open={this.state.openMenu}
           onRequestChange={this.handleOnRequestChange}
         >
-          <MenuItem primaryText="View Profile" leftIcon={<i className="material-icons">account_circle</i>} />
-          <MenuItem primaryText="Inbox" leftIcon={<i className="material-icons">mail_outline</i>} />
-          <MenuItem primaryText="Calendar" leftIcon={<i className="material-icons">date_range</i>} />
+          <MenuItem
+            primaryText="Meu Perfil"
+            onClick={() => {
+              window.location.assign('/meu-perfil')
+            }}
+            leftIcon={<i className="material-icons">account_circle</i>} />
           <Divider />
-          <MenuItem primaryText="Settings" leftIcon={<i className="material-icons">settings</i>} />
-          <MenuItem primaryText="Sign Out" leftIcon={<i className="material-icons">power_settings_new</i>} />
+          <MenuItem
+            primaryText="Sair"
+            onClick={() => {
+              this.signOut()
+            }}
+            leftIcon={<i className="material-icons">power_settings_new</i>} />
         </IconMenu>
       </div>
 
     );
   }
 }
+
+export default AvatarDropdown

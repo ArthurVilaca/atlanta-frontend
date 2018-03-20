@@ -12,14 +12,22 @@ import RegisterDealer from '../pages/register-dealer';
 import Delaer from '../pages/dealer';
 import Client from '../pages/client';
 import Clients from '../pages/clients';
+import Profile from '../pages/profile';
 
 
 class RoutesComponent extends Component {
   render() {
     const currentPath = window.location.pathname;
+    let token = localStorage.getItem('token')
+    if(!token && currentPath === "/") {
+      window.location.assign('/login')
+    } else if(currentPath === "/") {
+      window.location.assign('/home')
+    }
     return (
       <div>
         <Route exact path="/Default" component={Home}/>
+        <Route exact path="/home" component={Home}/>
         <Route exact path="/login" component={Login}/>
         { currentPath === "/registrar" && <Redirect to={"/login"}/> }
         <Route exact path="/registrar/revendedor" component={RegisterDealer}/>
@@ -30,6 +38,7 @@ class RoutesComponent extends Component {
         <Route exact path="/clientes" component={Clients}/>
         <Route exact path="/clientes/:id" component={Client}/>
         <Route exact path="/clientes/:id/paginas" component={Pages}/>
+        <Route exact path="/meu-perfil" component={Profile}/>
       </div>
     );
   }

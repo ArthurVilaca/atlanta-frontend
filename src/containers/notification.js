@@ -59,10 +59,10 @@ class Notification extends Component {
     return (
       <div>
         <button className="notification-trigger an-circle-icon-btn notification" onClick={this.showNotification}>
-          <i className="fa fa-flash"></i>
+          <i className="material-icons">update</i>
         </button>
         <div className={toggleNotification}>
-          <h6>Latest Activities</h6>
+          <h6>Ultimas Atualizações</h6>
           {this.showAllNotifications()}
         </div>
       </div>

@@ -96,7 +96,7 @@ class SidebarMenuRouters extends Component {
             secondary={true}
             onClick={this.toggleMenu}
           >
-            <i className="material-icons">format_indent_decrease</i>
+            <i className="material-icons">menu</i>
           </FloatingActionButton>
         </div>
       </div>

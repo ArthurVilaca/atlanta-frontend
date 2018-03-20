@@ -21,7 +21,7 @@ class Pages extends Component {
     }
 
     loadPages = () => {
-        this.service.get('/paginas')
+        this.service.get('/page')
             .then((response) => {
                 console.log(response);
                 this.setState({

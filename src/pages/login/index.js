@@ -26,7 +26,7 @@ class Login extends Component {
                     localStorage.setItem('token', myResponse.dataset.token)
                     myResponse.dataset.user_type = 'D'
                     if(myResponse.dataset.user_type === 'D') {
-                        this.props.history.push('/clientes' )
+                        window.location.assign('/clientes')
                     } else if(myResponse.dataset.user_type === 'C') {
                         this.props.history.push('/paginas' )
                     }
@@ -66,6 +66,7 @@ class Login extends Component {
                             onChange={this.handleChangePassword}
                             defaultValue={this.state.password}
                             floatingLabelText="senha"
+                            type="password"
                             fullWidth={true}
                         />
                         <div className="pt20">
