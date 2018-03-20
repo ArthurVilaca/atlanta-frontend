@@ -13,16 +13,15 @@ class Client extends Component {
         this.service = new Service();
         this.service.setToken(localStorage.getItem('token'))
         this.state = {
-            username: '',
-            name: '',
-            password: '',
-            user_type: 'C',
-            registration_code: '',
-            company_branch: '',
-            sale_plan: 'Basic',
+            client: null
         }
-        if(this.props.match.params.id !== 'novo') {
+    }
+    
+    componentDidMount() {
+        if(this.props.match.params.id && this.props.match.params.id !== 'novo') {
             this.loadclient()
+        } else {
+            this.setState({ client: {} });
         }
     }
 
@@ -30,10 +29,10 @@ class Client extends Component {
         this.service.get('/client/' + this.props.match.params.id)
             .then((response) => {
                 if(response.data.message.type === "S") {
-                    this.setState({name: response.data.dataset.user.name})
-                    this.setState({username: response.data.dataset.user.username})
-                    this.setState({registration_code: response.data.dataset.client.registration_code})
-                    this.setState({company_branch: response.data.dataset.client.company_branch})
+                    let client = response.data.dataset.client;
+                    client.name = response.data.dataset.user.name;
+                    client.username = response.data.dataset.user.username;
+                    this.setState({client: client});
                 }
             })
             .catch((error) => {
@@ -94,6 +93,10 @@ class Client extends Component {
     }
 
     render() {
+        if(!this.state.client) {
+            return null;
+        }
+        let client = this.state.client;
         return (
             <div>
                 <div className="login-wrapper">
@@ -102,34 +105,34 @@ class Client extends Component {
                         <TextField
                             id="user-name"
                             floatingLabelText="Usuario"
-                            defaultValue={this.state.username}
+                            defaultValue={client.username}
                             onChange={this.handleChangeUserName}
                             fullWidth={true}
                             />
                         <TextField
                             id="last-name"
                             floatingLabelText="Nome do Cliente"
-                            defaultValue={this.state.name}
+                            defaultValue={client.name}
                             onChange={this.handleChangeName}
                             fullWidth={true}
                             />
                         <TextField
                             id="company-name"
                             floatingLabelText="Nome da Empresa"
-                            defaultValue={this.state.company_branch}
+                            defaultValue={client.company_branch}
                             onChange={this.handleChangeCompanyBranch}
                             fullWidth={true}
                             />
                         <TextField
                             id="CNPj"
-                            defaultValue={this.state.registration_code}
+                            defaultValue={client.registration_code}
                             onChange={this.handleChangeRegistrationCode}
                             floatingLabelText="CNPj"
                             fullWidth={true}
                             />
                         <TextField
                             id="pass"
-                            defaultValue={this.state.password}
+                            defaultValue={client.password}
                             onChange={this.handleChangePassword}
                             floatingLabelText="Password"
                             fullWidth={true}
