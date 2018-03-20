@@ -5,6 +5,15 @@ class Service {
         this.state = {
             'token': ''
         }
+
+        const currentPath = window.location.pathname;
+        let token = localStorage.getItem('token')
+
+        if(!token && currentPath === "/") {
+            window.location.assign('/login')
+        } else if(currentPath !== "/login" && !token) {
+            window.location.assign('/login')
+        }
     }
 
     validateRequest(data) {
