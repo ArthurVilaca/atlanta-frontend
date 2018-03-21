@@ -12,16 +12,14 @@ class Client extends Component {
         super(props);
         this.service = new Service();
         this.service.setToken(localStorage.getItem('token'))
-        this.state = {
-            client: null
-        }
+        this.state = null
     }
     
     componentDidMount() {
         if(this.props.match.params.id && this.props.match.params.id !== 'novo') {
             this.loadclient()
         } else {
-            this.setState({ client: {} });
+            this.setState({ user_type: 'C' });
         }
     }
 
@@ -32,7 +30,7 @@ class Client extends Component {
                     let client = response.data.dataset.client;
                     client.name = response.data.dataset.user.name;
                     client.username = response.data.dataset.user.username;
-                    this.setState({client: client});
+                    this.setState(client);
                 }
             })
             .catch((error) => {
@@ -93,10 +91,10 @@ class Client extends Component {
     }
 
     render() {
-        if(!this.state.client) {
+        if(!this.state) {
             return null;
         }
-        let client = this.state.client;
+        let client = this.state;
         return (
             <div>
                 <div className="login-wrapper">

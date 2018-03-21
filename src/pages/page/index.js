@@ -11,7 +11,7 @@ import Edit from '../edit';
 import './page.css';
 import Service from '../../service';
 
-var components = require('../components/GenericComponent');
+import componentsArray from '../components'
 var Allcomponents = require('../components/GenericComponent');
 
 const customStyles = {
@@ -47,7 +47,7 @@ class Page extends Component {
             },
             config: null,
             editingComponent: null,
-            components: components.default,
+            components: [],
             isHovering: false,
             modalIsOpen: false,
             modalConfigPage: false,
@@ -63,7 +63,22 @@ class Page extends Component {
     loadPage = () => {
         this.service.get(this.state.urlApi)
             .then((response) => {
-                console.log(response)
+                if(response.data.message.type === "S") {
+                    let components = response.data.dataset.Component;
+                    for(let i in components) {
+                        for(let c in componentsArray) {
+                            if(componentsArray[c].name === components[i].name) {
+                                components[i].name = componentsArray[c].value
+                                components[i].configs.height = components[i].configs.min_height
+                                components[i].configs.backgroundColor = components[i].configs.background_color
+                                components[i].configs.canEditBackgroundColor = components[i].configs.can_edit_background_colort
+                                components[i].configs.canEditBackgroundImage = components[i].configs.can_edit_background_image
+                            }
+                        }
+                    }
+                    this.setState({components: components})
+                    console.log(this.state.components)
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -120,11 +135,34 @@ class Page extends Component {
     }
 
     pushComponent = (component) => {
-        component.id = this.state.components.length + 1;
-        this.state.components.push(component);
-        // this.setState({
-        //     components: ...components.push(component);
-        // })
+        const obj = {
+            name: component.configs.name,
+            label: component.label,
+            name_config: component.configs.name,
+            text1: component.configs.text1,
+            text2: component.configs.text2,
+            text3: component.configs.text3,
+            text4: component.configs.text4,
+            text5: component.configs.text5,
+            image1: component.configs.image1,
+            image2: component.configs.image2,
+            image3: component.configs.image3,
+            background_color: component.configs.backgroundColor,
+            min_height: component.configs.height,
+            can_edit_background_image: component.configs.canEditBackgroundColor,
+            can_edit_background_color: component.configs.canEditBackgroundImage
+       }
+        
+        this.service.post(this.state.urlApi, obj)
+            .then((response) => {
+                if(response.data.message.type === "S") {
+                    this.closeModal()
+                    this.loadPage()
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     openConfigsPage = () => {
@@ -185,6 +223,16 @@ class Page extends Component {
                                 </div>
                             );
                         })
+                    }
+
+                    {
+                        this.state.components.length === 0 && 
+                            <FloatingActionButton
+                                onClick={() => {
+                                    this.addComponent(0)
+                                }} >
+                                <ContentAdd />
+                            </FloatingActionButton>
                     }
                 </div>
                 {

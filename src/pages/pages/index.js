@@ -74,7 +74,7 @@ class Pages extends Component {
         this.service.post(this.state.urlApi, this.state.newPage)
             .then((response) => {
                 if(response.data.message.type === "S") {
-                    this.props.history.push('/paginas/' + response.data.dataset.Page.id )
+                    this.props.history.push('/paginas/' + response.data.dataset.Page.id + '/editar' )
                 }
             })
             .catch((error) => {

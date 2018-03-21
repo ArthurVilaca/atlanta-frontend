@@ -37,5 +37,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://165.227.71.216/atlanta-backend/public/index.php/api"
+  "proxy": "http://localhost/atlanta-backend/public/index.php/api",
+  "proxy_teste": "http://165.227.71.216/atlanta-backend/public/index.php/api"
 }
