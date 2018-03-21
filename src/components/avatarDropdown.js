@@ -25,6 +25,7 @@ class AvatarDropdown extends Component {
 
   signOut = () => {
     localStorage.removeItem('token')
+    localStorage.removeItem('login-info')
     window.location.assign('/login')
   }
 

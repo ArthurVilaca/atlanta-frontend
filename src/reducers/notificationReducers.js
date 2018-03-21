@@ -1,6 +1,5 @@
 import moment from 'moment';
 import img1 from '../img/user1.jpg';
-import img2 from '../img/user2.jpg';
 
 export default function () {
   return [

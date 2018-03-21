@@ -13,3 +13,17 @@
     right: 20px;
     bottom: 20px;
 }
+
+.content-modal-pages {
+    min-width: 300px;
+}
+
+.modal-header-pages {
+    width: 100%;
+    padding: 20px;
+}
+
+.modal-body-pages {
+    min-height: 300px;
+    min-width: 400px;
+}

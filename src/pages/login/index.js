@@ -28,7 +28,7 @@ class Login extends Component {
                     if(myResponse.dataset.user_type === 'D') {
                         window.location.assign('/clientes')
                     } else if(myResponse.dataset.user_type === 'C') {
-                        this.props.history.push('/paginas' )
+                        window.location.assign('/paginas')
                     }
                 } else {
                     console.log(myResponse);

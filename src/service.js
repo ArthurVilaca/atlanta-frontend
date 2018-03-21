@@ -11,9 +11,14 @@ class Service {
 
         if(!token && currentPath === "/") {
             window.location.assign('/login')
-        } else if(currentPath !== "/login" && !token) {
+        } else if( !this.isSpecificPage(currentPath) && !token) {
             window.location.assign('/login')
         }
+    }
+
+    isSpecificPage(route) {
+        const routes = ['/login', '/registrar/revendedor']
+        return routes.indexOf(route) > -1;
     }
 
     validateRequest(data) {
