@@ -5,6 +5,20 @@ class Service {
         this.state = {
             'token': ''
         }
+
+        const currentPath = window.location.pathname;
+        let token = localStorage.getItem('token')
+
+        if(!token && currentPath === "/") {
+            window.location.assign('/login')
+        } else if( !this.isSpecificPage(currentPath) && !token) {
+            window.location.assign('/login')
+        }
+    }
+
+    isSpecificPage(route) {
+        const routes = ['/login', '/registrar/revendedor']
+        return routes.indexOf(route) > -1;
     }
 
     validateRequest(data) {

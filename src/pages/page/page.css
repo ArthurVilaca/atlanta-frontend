@@ -1,6 +1,6 @@
 .content-page {
     display: inline-block;
-    width: 80%;
+    width: 70%;
     float: left;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .content-modal {
-    min-width: 600px;
+    min-width: 400px;
 }
 
 .modal-header {
@@ -36,8 +36,11 @@
 }
 
 .preview-component {
-    height: 100px;
-    display: initial;
+    height: 100px !important;
+    width: 100px !important;
+    padding: 10px;
+    display: inline-block;
+    margin: 20px;
 }
 
 .hide {

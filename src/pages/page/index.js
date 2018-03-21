@@ -31,6 +31,15 @@ class Page extends Component {
         super(props);
         this.service = new Service();
         this.service.setToken(localStorage.getItem('token'))
+        var user = JSON.parse(localStorage.getItem('login-info'))
+        var urlApi = ''
+
+        if(user.user_type === "D") {
+            urlApi = '/page/client/' + this.props.match.params.client_id
+        } else if(user.user_type === "C") {
+            urlApi = '/page/' + this.props.match.params.id + '/components'
+        }
+
         this.state = {
             pageConfig: {
                 name: 'Pagina de teste',
@@ -42,12 +51,17 @@ class Page extends Component {
             isHovering: false,
             modalIsOpen: false,
             modalConfigPage: false,
+            urlApi: urlApi,
+            user: user
         }
+    }
+    
+    componentDidMount() {
         this.loadPage();
     }
 
     loadPage = () => {
-        this.service.get('/paginas/' + this.props.match.params.id)
+        this.service.get(this.state.urlApi)
             .then((response) => {
                 console.log(response)
             })
@@ -193,14 +207,14 @@ class Page extends Component {
                                 className="material-icons right">close</i>
                         </div>
                         <div className="modal-body">
-                            <div className="row">
+                            <div className="">
                                 {
                                     Allcomponents.default.map( (component, id) => {
                                         const TagName = component.name;
                                         return (
                                             <div
                                                 key={id}
-                                                className="col-md-4 preview-component"
+                                                className="preview-component"
                                                 onClick={() => {
                                                     this.pushComponent(component)
                                                 }}

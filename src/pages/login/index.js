@@ -24,11 +24,11 @@ class Login extends Component {
                 let myResponse = response.data;
                 if(myResponse.message.type === 'S') {
                     localStorage.setItem('token', myResponse.dataset.token)
-                    myResponse.dataset.user_type = 'D'
+                    localStorage.setItem('login-info', JSON.stringify(myResponse.dataset))
                     if(myResponse.dataset.user_type === 'D') {
                         window.location.assign('/clientes')
                     } else if(myResponse.dataset.user_type === 'C') {
-                        this.props.history.push('/paginas' )
+                        window.location.assign('/paginas')
                     }
                 } else {
                     console.log(myResponse);

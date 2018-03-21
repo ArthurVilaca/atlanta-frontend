@@ -1,14 +1,3 @@
-.content-page {
-    display: inline-block;
-    width: 80%;
-    float: left;
-}
-
-.content-page-title {
-    width: 100%;
-    padding: 20px;
-}
-
 .publish-site-page {
     width: 20%;
     display: inline-block;
@@ -33,11 +22,6 @@
 .modal-body {
     min-height: 300px;
     min-width: 400px;
-}
-
-.preview-component {
-    height: 100px;
-    display: initial;
 }
 
 .hide {

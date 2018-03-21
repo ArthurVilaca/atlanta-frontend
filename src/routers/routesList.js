@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
 class RoutesList extends Component {
+  constructor(props) {
+    super(props);
+    var user = JSON.parse(localStorage.getItem('login-info'))
+    this.state = {
+      user: user
+    }
+  }
 
   componentDidMount() {
     $('.sidebar-nav ul .has-child .child-menu').hide();
@@ -21,22 +28,42 @@ class RoutesList extends Component {
             <Link to="/"><span className="material-icons">dashboard</span>Dashboard</Link>
           </li>
 
-          <li className="divider"></li>
-          <li className="has-child">
-            <a href=""><span className="material-icons">shopping_cart</span>Clientes</a>
-            <ul className="child-menu">
-              <li><Link to="/clientes">Listar Clientes</Link></li>
-              <li><Link to="/clientes/novo">Novo Clientes</Link></li>
-            </ul>
-          </li>
+          {
+            this.state.user.user_type === "D" && 
+            <li className="has-child">
+              <a href=""><span className="material-icons">shopping_cart</span>Clientes</a>
+              <ul className="child-menu">
+                <li><Link to="/clientes">Listar Clientes</Link></li>
+                <li><Link to="/clientes/novo">Novo Clientes</Link></li>
+              </ul>
+            </li>
+          }
 
-          <li className="divider"></li>
-          <li className="has-child">
-            <a href=""><span className="material-icons">folder</span>Financeiro</a>
-            <ul className="child-menu">
-              <li><Link to="/ui-kit/buttons">Ganhos</Link></li>
-            </ul>
-          </li>
+          {
+            this.state.user.user_type === "D" && 
+            <div>
+              <li className="divider"></li>
+              <li className="has-child">
+                <a href=""><span className="material-icons">folder</span>Financeiro</a>
+                <ul className="child-menu">
+                  <li><Link to="/ui-kit/buttons">Ganhos</Link></li>
+                </ul>
+              </li>
+            </div>
+          }
+
+          {
+            this.state.user.user_type === "C" && 
+            <div>
+              <li className="divider"></li>
+              <li className="has-child">
+                <a href=""><span className="material-icons">folder</span>Paginas</a>
+                <ul className="child-menu">
+                  <li><Link to="/paginas">Listar</Link></li>
+                </ul>
+              </li>
+            </div>
+          }
 
           <li className="divider"></li>
           <li className="has-child">
