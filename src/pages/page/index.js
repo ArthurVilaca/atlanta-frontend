@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import Modal from 'react-modal';
+import { debounce } from 'lodash'
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -54,6 +55,7 @@ class Page extends Component {
             urlApi: urlApi,
             user: user
         }
+        this.saveData = debounce(this.saveData,200);
     }
     
     componentDidMount() {
@@ -77,7 +79,6 @@ class Page extends Component {
                         }
                     }
                     this.setState({components: components})
-                    console.log(this.state.components)
                 }
             })
             .catch((error) => {
@@ -90,12 +91,7 @@ class Page extends Component {
     }
 
     changeProperty = (value) => {
-        this.setState({
-            components: this.state.components.map(component => this.state.config.name === component.label
-              ? { ...component, configs: value }
-              : component
-            )
-        });
+        this.saveData(value)
     }
 
     publishSite = () => {
@@ -130,8 +126,39 @@ class Page extends Component {
         this.setState({modalIsOpen: false});
     }
 
-    saveData = () => {
+    stopEditing = () => {
         this.setState({config: null});
+    }
+
+    saveData = (component) => {
+        const obj = {
+            id: component.id,
+            name: component.name,
+            name_config: component.name,
+            text1: component.text1,
+            text2: component.text2,
+            text3: component.text3,
+            text4: component.text4,
+            text5: component.text5,
+            image1: component.image1,
+            image2: component.image2,
+            image3: component.image3,
+            background_color: component.backgroundColor,
+            min_height: component.height,
+            can_edit_background_image: component.canEditBackgroundColor,
+            can_edit_background_color: component.canEditBackgroundImage
+       }
+
+        this.service.put(this.state.urlApi + '/' + obj.id, obj)
+            .then((response) => {
+                if(response.data.message.type === "S") {
+                    this.closeModal()
+                    this.loadPage()
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     pushComponent = (component) => {
@@ -237,7 +264,7 @@ class Page extends Component {
                 </div>
                 {
                     this.state.config && 
-                    <Edit config={this.state.config} changeProperty={this.changeProperty} saveData={this.saveData} />
+                    <Edit config={this.state.config} changeProperty={this.changeProperty} saveData={this.stopEditing} />
                 }
 
                 <Modal
