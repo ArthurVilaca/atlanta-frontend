@@ -13,6 +13,8 @@ import Delaer from '../pages/dealer';
 import Client from '../pages/client';
 import Clients from '../pages/clients';
 import Profile from '../pages/profile';
+import Dealers from '../pages/dealers';
+import Dealer from '../pages/dealer';
 
 
 class RoutesComponent extends Component {
@@ -39,6 +41,8 @@ class RoutesComponent extends Component {
         <Route exact path="/clientes/:id" component={Client}/>
         <Route exact path="/clientes/:id/paginas" component={Pages}/>
         <Route exact path="/meu-perfil" component={Profile}/>
+        <Route exact path="/revendedores" component={Dealers}/>
+        <Route exact path="/revendedores/:id" component={Dealer}/>
       </div>
     );
   }

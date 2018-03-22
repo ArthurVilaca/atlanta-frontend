@@ -1,71 +1,141 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import {GridList, GridTile} from 'material-ui/GridList';
-import Subheader from 'material-ui/Subheader';
 
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import Service from '../../service';
-import './dealer.css';
 
 class Dealer extends Component {
     constructor(props) {
         super(props);
         this.service = new Service();
         this.service.setToken(localStorage.getItem('token'))
-        this.state = {
-            clients: [],
+        this.state = null
+    }
+    
+    componentDidMount() {
+        if(this.props.match.params.id && this.props.match.params.id !== 'novo') {
+            this.loadDealer()
+        } else {
+            this.setState({ user_type: 'D' });
         }
-        this.loadClients();
     }
 
-    loadClients = () => {
-        this.service.get('/clients')
+    loadDealer = () => {
+        this.service.get('/dealer/' + this.props.match.params.id)
             .then((response) => {
-                console.log(response);
-                this.setState({
-                    clients: [{
-                        id: 1,
-                        name: 'padariaDoJoao',
-                        status: 'Ativo',
-                    }]
-                })
+                if(response.data.message.type === "S") {
+                    let dealer = response.data.dataset.dealer;
+                    dealer.name = response.data.dataset.user.name;
+                    dealer.username = response.data.dataset.user.username;
+                    this.setState(dealer);
+                }
             })
             .catch((error) => {
                 console.log(error);
             })
     }
 
-    render() {
-        return (
-            <div className="content-pages">
-                <GridList
-                    cellHeight={180} >
-                    <Subheader>Clientes</Subheader>
-                    {
-                        this.state.clients.map((client) => (
-                            <GridTile
-                                className="site"
-                                key={client.id}
-                                title={client.name}
-                                subtitle={<span><b>{client.status}</b></span>}
-                                onClick={() => {
-                                    this.props.history.push('/paginas/' + client.id + '/editar' )
-                                }}>
-                            {/* <img src={page.preview} /> */}
-                        </GridTile>
-                    ))}
-                </GridList>
+    handleChangeUserName = (event) => {
+        this.setState({username: event.target.value });
+    }
 
-                <FloatingActionButton
-                    secondary={true}
-                    className="float-button-pages"
-                    onClick={() => {
-                        this.props.history.push('/clientes/novo' )
-                    }} >
-                    <ContentAdd />
-                </FloatingActionButton>
+    handleChangePassword = (event) => {
+        this.setState({password: event.target.value });
+    }
+
+    handleChangeRegistrationCode = (event) => {
+        this.setState({registration_code: event.target.value });
+    }
+
+    handleChangeName = (event) => {
+        this.setState({name: event.target.value });
+    }
+
+    doRegisterDealer = () => {
+        if(this.props.match.params.id !== 'novo') {
+            this.service.put('/dealer/' + this.props.match.params.id, this.state)
+                .then((response) => {
+                    let myResponse = response.data;
+                    if(myResponse.message.type === 'S') {
+                        window.location.assign('/revendedores')
+                    } else {
+                        console.log(myResponse);
+                        console.log('error');
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        } else {
+            this.service.post('/dealer', this.state)
+                .then((response) => {
+                    let myResponse = response.data;
+                    if(myResponse.message.type === 'S') {
+                        window.location.assign('/revendedores')
+                    } else {
+                        console.log(myResponse);
+                        console.log('error');
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
+    }
+
+    render() {
+        if(!this.state) {
+            return null;
+        }
+        let dealer = this.state;
+        return (
+            <div>
+                <div className="login-wrapper">
+                    <div className="login-fields">
+                        <h3>Cadastro de Revendedor</h3>
+                        <TextField
+                            id="user-name"
+                            floatingLabelText="Usuario"
+                            defaultValue={dealer.username}
+                            onChange={this.handleChangeUserName}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="last-name"
+                            floatingLabelText="Nome do Revendedor"
+                            defaultValue={dealer.name}
+                            onChange={this.handleChangeName}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="CPF"
+                            defaultValue={dealer.registration_code}
+                            onChange={this.handleChangeRegistrationCode}
+                            floatingLabelText="CPF"
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="pass"
+                            defaultValue={dealer.password}
+                            onChange={this.handleChangePassword}
+                            floatingLabelText="Password"
+                            fullWidth={true}
+                            type="password"
+                            />
+
+                        <div className="pt20">
+                            <RaisedButton
+                                label="Salvar"
+                                primary={true}
+                                onClick={() => {
+                                    this.doRegisterDealer()
+                                }}
+                                fullWidth={true}/>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
