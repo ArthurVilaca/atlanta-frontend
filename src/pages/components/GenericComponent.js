@@ -1,7 +1,7 @@
 import Header1 from '../components/header-1';
 import Header2 from '../components/header-2';
-// import AlbumGallery from '../components/album-gallery';
 import FooterVariant1 from '../components/footer-variant-1';
+// import AlbumGallery from '../components/album-gallery';
 // import FooterVariant2 from '../components/footer-variant-2';
 
 let components = [{

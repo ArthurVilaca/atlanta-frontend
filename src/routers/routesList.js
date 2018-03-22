@@ -30,13 +30,16 @@ class RoutesList extends Component {
 
           {
             this.state.user.user_type === "D" && 
-            <li className="has-child">
-              <a href=""><span className="material-icons">shopping_cart</span>Clientes</a>
-              <ul className="child-menu">
-                <li><Link to="/clientes">Listar Clientes</Link></li>
-                <li><Link to="/clientes/novo">Novo Clientes</Link></li>
-              </ul>
-            </li>
+            <div>
+              <li className="divider"></li>
+              <li className="has-child">
+                <a href=""><span className="material-icons">shopping_cart</span>Clientes</a>
+                <ul className="child-menu">
+                  <li><Link to="/clientes">Listar Clientes</Link></li>
+                  <li><Link to="/clientes/novo">Novo Clientes</Link></li>
+                </ul>
+              </li>
+            </div>
           }
 
           {

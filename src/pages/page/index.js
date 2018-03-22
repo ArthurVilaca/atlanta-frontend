@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import Modal from 'react-modal';
+import { debounce } from 'lodash'
 
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
@@ -11,7 +12,7 @@ import Edit from '../edit';
 import './page.css';
 import Service from '../../service';
 
-var components = require('../components/GenericComponent');
+import componentsArray from '../components'
 var Allcomponents = require('../components/GenericComponent');
 
 const customStyles = {
@@ -35,7 +36,7 @@ class Page extends Component {
         var urlApi = ''
 
         if(user.user_type === "D") {
-            urlApi = '/page/client/' + this.props.match.params.client_id
+            urlApi = '/page/' + this.props.match.params.page_id + '/components'
         } else if(user.user_type === "C") {
             urlApi = '/page/' + this.props.match.params.id + '/components'
         }
@@ -47,13 +48,14 @@ class Page extends Component {
             },
             config: null,
             editingComponent: null,
-            components: components.default,
+            components: [],
             isHovering: false,
             modalIsOpen: false,
             modalConfigPage: false,
             urlApi: urlApi,
             user: user
         }
+        this.saveData = debounce(this.saveData,200);
     }
     
     componentDidMount() {
@@ -63,7 +65,21 @@ class Page extends Component {
     loadPage = () => {
         this.service.get(this.state.urlApi)
             .then((response) => {
-                console.log(response)
+                if(response.data.message.type === "S") {
+                    let components = response.data.dataset.Component;
+                    for(let i in components) {
+                        for(let c in componentsArray) {
+                            if(componentsArray[c].name === components[i].name) {
+                                components[i].name = componentsArray[c].value
+                                components[i].configs.height = components[i].configs.min_height
+                                components[i].configs.backgroundColor = components[i].configs.background_color
+                                components[i].configs.canEditBackgroundColor = components[i].configs.can_edit_background_colort
+                                components[i].configs.canEditBackgroundImage = components[i].configs.can_edit_background_image
+                            }
+                        }
+                    }
+                    this.setState({components: components})
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -75,12 +91,7 @@ class Page extends Component {
     }
 
     changeProperty = (value) => {
-        this.setState({
-            components: this.state.components.map(component => this.state.config.name === component.label
-              ? { ...component, configs: value }
-              : component
-            )
-        });
+        this.saveData(value)
     }
 
     publishSite = () => {
@@ -115,16 +126,70 @@ class Page extends Component {
         this.setState({modalIsOpen: false});
     }
 
-    saveData = () => {
+    stopEditing = () => {
         this.setState({config: null});
     }
 
+    saveData = (component) => {
+        const obj = {
+            id: component.id,
+            name: component.name,
+            name_config: component.name,
+            text1: component.text1,
+            text2: component.text2,
+            text3: component.text3,
+            text4: component.text4,
+            text5: component.text5,
+            image1: component.image1,
+            image2: component.image2,
+            image3: component.image3,
+            background_color: component.backgroundColor,
+            min_height: component.height,
+            can_edit_background_image: component.canEditBackgroundColor,
+            can_edit_background_color: component.canEditBackgroundImage
+       }
+
+        this.service.put(this.state.urlApi + '/' + obj.id, obj)
+            .then((response) => {
+                if(response.data.message.type === "S") {
+                    this.closeModal()
+                    this.loadPage()
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     pushComponent = (component) => {
-        component.id = this.state.components.length + 1;
-        this.state.components.push(component);
-        // this.setState({
-        //     components: ...components.push(component);
-        // })
+        const obj = {
+            name: component.configs.name,
+            label: component.label,
+            name_config: component.configs.name,
+            text1: component.configs.text1,
+            text2: component.configs.text2,
+            text3: component.configs.text3,
+            text4: component.configs.text4,
+            text5: component.configs.text5,
+            image1: component.configs.image1,
+            image2: component.configs.image2,
+            image3: component.configs.image3,
+            background_color: component.configs.backgroundColor,
+            min_height: component.configs.height,
+            can_edit_background_image: component.configs.canEditBackgroundColor,
+            can_edit_background_color: component.configs.canEditBackgroundImage
+       }
+        
+        this.service.post(this.state.urlApi, obj)
+            .then((response) => {
+                if(response.data.message.type === "S") {
+                    this.closeModal()
+                    this.loadPage()
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
 
     openConfigsPage = () => {
@@ -186,10 +251,20 @@ class Page extends Component {
                             );
                         })
                     }
+
+                    {
+                        this.state.components.length === 0 && 
+                            <FloatingActionButton
+                                onClick={() => {
+                                    this.addComponent(0)
+                                }} >
+                                <ContentAdd />
+                            </FloatingActionButton>
+                    }
                 </div>
                 {
                     this.state.config && 
-                    <Edit config={this.state.config} changeProperty={this.changeProperty} saveData={this.saveData} />
+                    <Edit config={this.state.config} changeProperty={this.changeProperty} saveData={this.stopEditing} />
                 }
 
                 <Modal
