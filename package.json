@@ -39,5 +39,5 @@
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost/atlanta-backend/public/index.php/api",
-  "proxy_teste": "http://165.227.71.216/atlanta-backend/public/index.php/api"
+  "proxy_test": "http://165.227.71.216/atlanta-backend/public/index.php/api"
 }

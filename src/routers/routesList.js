@@ -21,6 +21,9 @@ class RoutesList extends Component {
   }
 
   render() {
+    if(!this.state.user) {
+      return null
+    }
     return (
       <div className="sidebar-nav">
         <ul>
@@ -29,17 +32,14 @@ class RoutesList extends Component {
           </li>
 
           {
-            this.state.user.user_type === "D" && 
-            <div>
-              <li className="divider"></li>
-              <li className="has-child">
-                <a href=""><span className="material-icons">shopping_cart</span>Clientes</a>
-                <ul className="child-menu">
-                  <li><Link to="/clientes">Listar Clientes</Link></li>
-                  <li><Link to="/clientes/novo">Novo Clientes</Link></li>
-                </ul>
-              </li>
-            </div>
+            ( this.state.user.user_type === "D" || this.state.user.user_type === "U" ) && 
+            <li className="has-child">
+              <a href=""><span className="material-icons">shopping_cart</span>Clientes</a>
+              <ul className="child-menu">
+                <li><Link to="/clientes">Listar Clientes</Link></li>
+                <li><Link to="/clientes/novo">Novo Clientes</Link></li>
+              </ul>
+            </li>
           }
 
           {
@@ -63,6 +63,20 @@ class RoutesList extends Component {
                 <a href=""><span className="material-icons">folder</span>Paginas</a>
                 <ul className="child-menu">
                   <li><Link to="/paginas">Listar</Link></li>
+                </ul>
+              </li>
+            </div>
+          }
+
+          {
+            this.state.user.user_type === "U" && 
+            <div>
+              <li className="divider"></li>
+              <li className="has-child">
+                <a href=""><span className="material-icons">folder</span>Revendedores</a>
+                <ul className="child-menu">
+                <li><Link to="/revendedores">Listar revendedores</Link></li>
+                <li><Link to="/revendedores/novo">Novo revendedore</Link></li>
                 </ul>
               </li>
             </div>
