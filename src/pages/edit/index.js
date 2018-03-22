@@ -11,24 +11,31 @@ class Edit extends Component {
         super(props);
         this.state = null
     }
+
+    componentDidMount() {
+        this.setState({ });
+    }
     
     componentWillReceiveProps(state) {
+        console.log(state.config);
         this.setState(state.config);
     }
 
     handleBackgroundColor = (color) => {
-        this.setState({ backgroundColor: color.hex });
-        this.props.changeProperty(this.state);
+        this.setState({ backgroundColor: color.hex }, () => {
+            this.props.changeProperty(this.state);
+        });
     }
 
-    saveData = (data) => {
-        this.setState(null);
+    saveData = () => {
         this.props.saveData();
+        this.setState(null);
     }
 
     handleText1Change = (event) => {
-        this.state.text1 = event.target.value;
-        this.props.changeProperty(this.state);
+        this.setState({ text1: event.target.value }, () => {
+            this.props.changeProperty(this.state);
+        });
     }
 
     render() {
