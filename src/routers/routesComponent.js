@@ -38,6 +38,7 @@ class RoutesComponent extends Component {
         <Route exact path="/clientes" component={Clients}/>
         <Route exact path="/clientes/:id" component={Client}/>
         <Route exact path="/clientes/:id/paginas" component={Pages}/>
+        <Route exact path="/clientes/:id/paginas/:page_id/editar" component={Page}/>
         <Route exact path="/meu-perfil" component={Profile}/>
       </div>
     );

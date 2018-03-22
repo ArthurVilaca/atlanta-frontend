@@ -96,6 +96,15 @@ class Pages extends Component {
         this.setState({newPage: this.state.newPage });
     }
 
+    openPage(id) {
+        if(this.state.user.user_type === "D") {
+            console.log('/clientes/' + this.props.match.params.id + '/paginas/' + id + '/editar')
+            this.props.history.push('/clientes/' + this.props.match.params.id + '/paginas/' + id + '/editar' )
+        } else if(this.state.user.user_type === "C") {
+            this.props.history.push('/paginas/' + id + '/editar' )
+        }
+    }
+
     render() {
         return (
             <div className="content-pages">
@@ -110,7 +119,7 @@ class Pages extends Component {
                                 title={page.name}
                                 subtitle={<span><b>{page.status}</b></span>}
                                 onClick={() => {
-                                    this.props.history.push('/paginas/' + page.id + '/editar' )
+                                    this.openPage(page.id)
                                 }}>
                             <img src={page.preview} />
                         </GridTile>

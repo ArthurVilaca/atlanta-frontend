@@ -36,7 +36,7 @@ class Page extends Component {
         var urlApi = ''
 
         if(user.user_type === "D") {
-            urlApi = '/page/client/' + this.props.match.params.client_id
+            urlApi = '/page/' + this.props.match.params.page_id + '/components'
         } else if(user.user_type === "C") {
             urlApi = '/page/' + this.props.match.params.id + '/components'
         }
