@@ -24,6 +24,9 @@ class Login extends Component {
                 let myResponse = response.data;
                 if(myResponse.message.type === 'S') {
                     localStorage.setItem('token', myResponse.dataset.token)
+                    let date = new Date();
+                    date.setHours(date.getHours() + 1);
+                    myResponse.dataset.expiration_date = date.getTime();
                     localStorage.setItem('login-info', JSON.stringify(myResponse.dataset))
                     if(myResponse.dataset.user_type === 'D') {
                         window.location.assign('/clientes')

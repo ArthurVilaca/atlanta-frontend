@@ -8,11 +8,23 @@ class Service {
 
         const currentPath = window.location.pathname;
         let token = localStorage.getItem('token')
+        
+        let loginInfo = localStorage.getItem('login-info')
+        if(!loginInfo && !this.isSpecificPage(currentPath)) {
+            return window.location.assign('/login')
+        }
+
+        if(!this.isSpecificPage(currentPath)) {
+            loginInfo = JSON.parse(loginInfo);
+            if(new Date(loginInfo.expiration_date) < new Date()) {
+                return window.location.assign('/login')
+            }
+        }
 
         if(!token && currentPath === "/") {
-            window.location.assign('/login')
+            return window.location.assign('/login')
         } else if( !this.isSpecificPage(currentPath) && !token) {
-            window.location.assign('/login')
+            return window.location.assign('/login')
         }
     }
 

@@ -43,13 +43,14 @@ class RoutesList extends Component {
           }
 
           {
-            this.state.user.user_type === "D" && 
+            this.state.user.user_type === "U" && 
             <div>
               <li className="divider"></li>
               <li className="has-child">
                 <a href=""><span className="material-icons">folder</span>Financeiro</a>
                 <ul className="child-menu">
-                  <li><Link to="/ui-kit/buttons">Ganhos</Link></li>
+                  <li><Link to="/contasapagar">Contas a pagar</Link></li>
+                  <li><Link to="/contasareceber">Contas a receber</Link></li>
                 </ul>
               </li>
             </div>

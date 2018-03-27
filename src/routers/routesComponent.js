@@ -16,6 +16,8 @@ import Profile from '../pages/profile';
 import Dealers from '../pages/dealers';
 import Dealer from '../pages/dealer';
 
+import Billspay from '../pages/billspay';
+import Billsreceive from '../pages/billsreceive';
 
 class RoutesComponent extends Component {
   render() {
@@ -44,6 +46,8 @@ class RoutesComponent extends Component {
         <Route exact path="/meu-perfil" component={Profile}/>
         <Route exact path="/revendedores" component={Dealers}/>
         <Route exact path="/revendedores/:id" component={Dealer}/>
+        <Route exact path="/contasapagar" component={Billspay}/>
+        <Route exact path="/contasareceber" component={Billsreceive}/>
       </div>
     );
   }
