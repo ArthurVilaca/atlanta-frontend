@@ -18,14 +18,14 @@ class Billsreceive extends Component {
         this.state = {
             billsreceives: []
         }
-        this.loadBillspay()
+        this.loadBillsreceive()
     }
 
-    loadBillspay = () => {
+    loadBillsreceive = () => {
         this.service.get('/billsreceive')
             .then((response) => {
                 let myResponse = response.data;
-                // this.setState({billspay: myResponse.dataset.User.client})
+                this.setState({billsreceives: myResponse.dataset.billsreceives})
             })
             .catch((error) => {
                 console.log(error);

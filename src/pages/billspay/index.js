@@ -25,7 +25,7 @@ class Billspay extends Component {
         this.service.get('/billspay')
             .then((response) => {
                 let myResponse = response.data;
-                // this.setState({billspay: myResponse.dataset.User.client})
+                this.setState({billspay: myResponse.dataset.billspays})
             })
             .catch((error) => {
                 console.log(error);
