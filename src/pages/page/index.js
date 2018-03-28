@@ -75,6 +75,7 @@ class Page extends Component {
                                 components[i].configs.backgroundColor = components[i].configs.background_color
                                 components[i].configs.canEditBackgroundColor = components[i].configs.can_edit_background_colort
                                 components[i].configs.canEditBackgroundImage = components[i].configs.can_edit_background_image
+                                components[i].configs.backgroundImage = components[i].configs.background_image
                             }
                         }
                     }
@@ -146,7 +147,8 @@ class Page extends Component {
             background_color: component.backgroundColor,
             min_height: component.height,
             can_edit_background_image: component.canEditBackgroundColor,
-            can_edit_background_color: component.canEditBackgroundImage
+            can_edit_background_color: component.canEditBackgroundImage,
+            background_image: component.backgroundImage,
        }
 
         this.service.put(this.state.urlApi + '/' + obj.id, obj)
@@ -177,7 +179,8 @@ class Page extends Component {
             background_color: component.configs.backgroundColor,
             min_height: component.configs.height,
             can_edit_background_image: component.configs.canEditBackgroundColor,
-            can_edit_background_color: component.configs.canEditBackgroundImage
+            can_edit_background_color: component.configs.canEditBackgroundImage,
+            background_image: component.configs.backgroundImage,
        }
         
         this.service.post(this.state.urlApi, obj)
@@ -307,8 +310,6 @@ class Page extends Component {
                             </div>
                         </div>
                     </div>
-
-                    
                 </Modal>
 
                 <Modal
@@ -346,8 +347,6 @@ class Page extends Component {
                                 >Salvar</button>
                         </div>
                     </div>
-
-                    
                 </Modal>
             </div>
         );

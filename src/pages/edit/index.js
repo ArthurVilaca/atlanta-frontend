@@ -1,15 +1,33 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 import { SketchPicker } from 'react-color';
+
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import Modal from 'react-modal';
+import Service from '../../service';
+
 import './edit.css';
+
+const customStyles = {
+    content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)'
+    }
+};
+Modal.setAppElement(document.getElementById('root'));
 
 class Edit extends Component {
     constructor(props) {
         super(props);
         this.state = null
+        this.service = new Service();
+        this.service.setToken(localStorage.getItem('token'))
     }
 
     componentDidMount() {
@@ -38,6 +56,44 @@ class Edit extends Component {
         });
     }
 
+    openGalery = (img) => {
+        this.service.get('/midia')
+            .then((response) => {
+                if(response.data.message.type === "S") {
+                    let midia = response.data.dataset.midias;
+                    this.setState({galery: midia})
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+
+        this.setState({imgInFoco: img});
+        this.setState({modalIsOpen: true});
+    }
+
+    closeModal = () => {
+        this.setState({modalIsOpen: false});
+    }
+
+    handleChangeInput = (event) => {
+        var files = event.target.files;
+        var photo;
+        var fd = new FormData();
+        if(files[0].size <= 2048000) {
+            fd.append('midia', files[0]);
+            this.service.post('/midia', fd)
+            .then((response) => {
+                if(response.data.message.type === "S") {
+                    this.openGalery()
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+        }
+    }
+
     render() {
         if(!this.state) {
             return null;
@@ -64,6 +120,51 @@ class Edit extends Component {
                 }
 
                 <div className="item-edit">
+                    <RaisedButton label="Alterar imagem de fundo"
+                        className="sketch-picker"
+                        primary={true}
+                        onClick={() => {
+                            this.openGalery('backgroundImage')
+                        }} />
+                </div>
+
+                <Modal
+                    isOpen={this.state.modalIsOpen}
+                    style={customStyles}
+                    contentLabel="Example Modal"
+                    >
+
+                    <div className="content-modal">
+                        <div className="modal-header">
+                            <div className="inline">Seleção de Componente</div>
+                            <i onClick={this.closeModal}
+                                className="material-icons right">close</i>
+                        </div>
+                        <div className="modal-body">
+                            <div className="">
+                                {
+                                    this.state.galery &&
+                                    this.state.galery.map( (img, id) => {
+                                        return (
+                                            <div
+                                                key={id}
+                                                className=""
+                                                onClick={() => {
+                                                    // this.pushComponent(component)
+                                                }}
+                                                >
+                                                <img className="preview-img" src={img.url}/> 
+                                            </div>
+                                        );
+                                    })
+                                }
+                                <input onChange={this.handleChangeInput} type="file" accept="image/jpg,image/png" multiple="false" />
+                            </div>
+                        </div>
+                    </div>
+                </Modal>
+
+                <div className="item-edit">
                     <RaisedButton label="Salvar"
                         className="sketch-picker"
                         primary={true}
@@ -71,6 +172,7 @@ class Edit extends Component {
                             this.saveData()
                         }} />
                 </div>
+
             </div>
         );
     }

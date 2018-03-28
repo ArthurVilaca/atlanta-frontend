@@ -22,3 +22,8 @@
 .text-field-edit {
     width: 80% !important;
 }
+
+.preview-img {
+    height: 150px;
+    width: 150px;
+}

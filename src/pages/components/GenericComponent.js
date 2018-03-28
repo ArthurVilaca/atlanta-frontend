@@ -15,7 +15,7 @@ let components = [{
         backgroundColor: 'gray',
         height: '200px',
         canEditBackgroundImage: false,
-        canEditBackgroundColor: false
+        canEditBackgroundColor: false,
     }
 }, {
     id: 2, name: Header2, label: 'Header2', configs: {
