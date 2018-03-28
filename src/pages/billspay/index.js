@@ -32,9 +32,16 @@ class Billspay extends Component {
             })
     }
 
+    generateBills = () => {
+
+    }
+
     render() {
         return (
             <div className="content">
+                <div>
+                    Contas a Pagar
+                </div>
                 {
                     this.state.billspays.map( (billspay) => {
                         return (
@@ -42,6 +49,14 @@ class Billspay extends Component {
                         )
                     })
                 }
+                <FloatingActionButton
+                    secondary={true}
+                    className="float-button-pages"
+                    onClick={() => {
+                        this.generateBills()
+                    }} >
+                    Gerar Contas
+                </FloatingActionButton>
             </div>
         );
     }

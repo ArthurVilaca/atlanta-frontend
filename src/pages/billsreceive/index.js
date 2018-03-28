@@ -32,9 +32,23 @@ class Billsreceive extends Component {
             })
     }
 
+    generateBills = () => {
+        this.service.post('/billsreceive')
+            .then((response) => {
+                let myResponse = response.data;
+                this.setState({billsreceives: myResponse.dataset.billsreceives})
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     render() {
         return (
             <div className="content">
+                <div>
+                    Contas a Receber
+                </div>
                 {
                     this.state.billsreceives.map( (billsreceive) => {
                         return (
@@ -42,6 +56,14 @@ class Billsreceive extends Component {
                         )
                     })
                 }
+                <FloatingActionButton
+                    secondary={true}
+                    className="float-button-pages"
+                    onClick={() => {
+                        this.generateBills()
+                    }} >
+                    Gerar Contas
+                </FloatingActionButton>
             </div>
         );
     }
