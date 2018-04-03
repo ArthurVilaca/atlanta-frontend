@@ -11,6 +11,9 @@ import TextField from 'material-ui/TextField';
 import Service from '../../service';
 import './pages.css';
 
+import defaultPages from '../components/defaultPages';
+var Allcomponents = require('../components/GenericComponent').default;
+
 const customStyles = {
     content: {
         top: '50%',
@@ -71,6 +74,40 @@ class Pages extends Component {
     }
 
     newPage = () => {
+        if(!this.state.newPage.name) {
+            return console.log('Nome da pagina deve ser preenchido');
+        }
+        if(!this.state.newPage.url) {
+            return console.log('URL da pagina deve ser preenchido');
+        }
+        if(this.state.newPage.page) {
+            this.state.newPage.page.components.forEach((component) => {
+                Allcomponents.forEach((Allcomponent) => {
+                    if(Allcomponent.label === component.label) {
+                        const obj = {
+                            name: Allcomponent.configs.name,
+                            label: Allcomponent.label,
+                            name_config: Allcomponent.configs.name,
+                            text1: Allcomponent.configs.text1,
+                            text2: Allcomponent.configs.text2,
+                            text3: Allcomponent.configs.text3,
+                            text4: Allcomponent.configs.text4,
+                            text5: Allcomponent.configs.text5,
+                            image1: Allcomponent.configs.image1,
+                            image2: Allcomponent.configs.image2,
+                            image3: Allcomponent.configs.image3,
+                            background_color: Allcomponent.configs.backgroundColor,
+                            min_height: Allcomponent.configs.height,
+                            can_edit_background_image: Allcomponent.configs.canEditBackgroundColor,
+                            can_edit_background_color: Allcomponent.configs.canEditBackgroundImage,
+                            background_image: Allcomponent.configs.backgroundImage,
+                       }
+
+                        component.configs = obj;
+                    }
+                })
+            })
+        }
         this.service.post(this.state.urlApi, this.state.newPage)
             .then((response) => {
                 if(response.data.message.type === "S") {
@@ -103,6 +140,16 @@ class Pages extends Component {
         } else if(this.state.user.user_type === "C") {
             this.props.history.push('/paginas/' + id + '/editar' )
         }
+    }
+
+    selectPage = (page) => {
+        // console.log(page.selected)
+        defaultPages.forEach((page) => {
+            page.selected = false
+        })
+        page.selected = true;
+        this.state.newPage.page = page;
+        this.setState({newPage: this.state.newPage });
     }
 
     render() {
@@ -151,7 +198,7 @@ class Pages extends Component {
                                 className="material-icons right">close</i>
                         </div>
                         <div className="modal-body-pages">
-                        <div className="row">
+                            <div className="row">
                                 <div className="col-md-12">
                                     <TextField
                                         defaultValue={this.state.newPage.name}
@@ -164,6 +211,27 @@ class Pages extends Component {
                                         onChange={this.handleNewPageUrl}
                                         hintText="Prefixo da URL" />
                                 </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-12">
+                                    Começar com uma pagina base
+                                </div>
+                            </div>
+                            <div className="row">
+                                {
+                                    defaultPages.map((page) => {
+                                        return (
+                                            <div key={page.id}
+                                                className={ `col-md-4 ${page.selected ? 'page-active' : '' }`}
+                                                onClick={ () => {
+                                                    this.selectPage(page)
+                                                }}>
+                                                <img className="preview-img" src={page.url}/> 
+                                                {page.name}
+                                            </div>
+                                        )
+                                    })
+                                }
                             </div>
                         </div>
                         <div className="modal-footer">

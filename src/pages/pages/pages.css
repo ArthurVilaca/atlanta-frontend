@@ -27,3 +27,7 @@
     min-height: 300px;
     min-width: 400px;
 }
+
+.page-active {
+    border: 1px blue solid;
+}

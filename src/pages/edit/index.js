@@ -57,7 +57,12 @@ class Edit extends Component {
     }
 
     openGalery = (img) => {
-        this.service.get('/midia')
+        let url = '/midia';
+        var user = JSON.parse(localStorage.getItem('login-info'))
+        if(user.user_type === "D") {
+            url = '/client/' + this.props.match.params.id + '/midia';
+        }
+        this.service.get(url)
             .then((response) => {
                 if(response.data.message.type === "S") {
                     let midia = response.data.dataset.midias;
