@@ -38,9 +38,9 @@
 .preview-component {
     height: 100px !important;
     width: 100px !important;
-    padding: 10px;
     display: inline-block;
-    margin: 20px;
+    margin: 10px;
+    overflow: hidden;
 }
 
 .hide {

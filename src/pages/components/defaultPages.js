@@ -3,14 +3,20 @@ let defaults = [{
     name: 'Academia',
     components: [{
         id: 1,
-        label: 'Header2'
+        label: 'Apresentacao1'
+    }, {
+        id: 2,
+        label: 'Apresentacao4'
     }]
 }, {
     id: 2,
     name: 'Padaria',
     components: [{
         id: 1,
-        label: 'Header1'
+        label: 'Apresentacao4'
+    }, {
+        id: 1,
+        label: 'Apresentacao6'
     }]
 }];
 

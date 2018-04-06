@@ -213,16 +213,16 @@ class Page extends Component {
                 <div className="content-page-title">
                     <div className="publish-site-header">Edição de Pagina</div>
                     <div className="publish-site-page">
-                        <RaisedButton label="Configurações"
+                        <button className="btn btn-primary my-1" label="Configurações"
                             primary={true}
                             onClick={() => {
                                 this.openConfigsPage()
-                            }} />
-                        <RaisedButton label="Publicar Site"
+                            }}>Configurações</button>
+                        <button className="btn btn-primary my-1" label="Publicar Site"
                             primary={true}
                             onClick={() => {
                                 this.publishSite()
-                            }} />
+                            }}>Publicar Site</button>
                     </div>
                 </div>
                 <div
@@ -285,14 +285,14 @@ class Page extends Component {
                                 className="material-icons right">close</i>
                         </div>
                         <div className="modal-body">
-                            <div className="">
+                            <div className="row">
                                 {
                                     Allcomponents.default.map( (component, id) => {
                                         const TagName = component.name;
                                         return (
                                             <div
                                                 key={id}
-                                                className="preview-component"
+                                                className="col-md-3 preview-component"
                                                 onClick={() => {
                                                     this.pushComponent(component)
                                                 }}
