@@ -16,6 +16,7 @@ import Profile from '../pages/profile';
 import Dealers from '../pages/dealers';
 import Dealer from '../pages/dealer';
 import Suport from '../pages/support';
+import DealerConfig from '../pages/dealer_config';
 
 import Billspay from '../pages/billspay';
 import Billsreceive from '../pages/billsreceive';
@@ -50,6 +51,7 @@ class RoutesComponent extends Component {
         <Route exact path="/contasapagar" component={Billspay}/>
         <Route exact path="/contasareceber" component={Billsreceive}/>
         <Route exact path="/suporte" component={Suport}/>
+        <Route exact path="/revendedor/config" component={DealerConfig}/>
       </div>
     );
   }
