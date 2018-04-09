@@ -101,7 +101,7 @@ class SidebarMenuRouters extends Component {
     const HeaderLogoWithMenu = () => (
       <div className="an-header" style={headerStyle}>
         <div className="header-left">
-          <a className="brand" href="">SITE2GO</a>
+          <a className="brand" href="/">SITE2GO</a>
           <FloatingActionButton
             mini={true}
             secondary={true}
@@ -132,7 +132,9 @@ class SidebarMenuRouters extends Component {
           }
           <div className={pageContent}>
             {/* <StyleSwitcher/> */}
-            <RouterOrientation />
+            { !this.isSpecificPage(currentPath) && 
+              <RouterOrientation />
+            }
             <RoutesComponent />
             {/* <Footer /> */}
           </div>

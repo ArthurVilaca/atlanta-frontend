@@ -65,6 +65,7 @@ class RoutesList extends Component {
               <li className="has-child">
                 <a href=""><span className="material-icons">folder</span>Suporte</a>
                 <ul className="child-menu">
+                  <li><Link to="/suporte">Suporte</Link></li>
                 </ul>
               </li>
             </div>
