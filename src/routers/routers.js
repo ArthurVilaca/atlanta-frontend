@@ -15,6 +15,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 // import Footer from '../components/footer.js';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 // import StyleSwitcher from '../style-switcher/index.js';
+import RouterOrientation from './routerOrientation';
 
 class SidebarMenuRouters extends Component {
   constructor () {
@@ -41,11 +42,21 @@ class SidebarMenuRouters extends Component {
     if (window.innerWidth < 991) {
       this.setState({menuOpen: false});
     }
+
+    const currentPath = window.location.pathname;
+    if(currentPath.indexOf('editar') > -1) {
+      this.toggleMenu()
+    }
   }
 
   // Sidebar collapse when tablet
   componentWillUnmount() {
     window.removeEventListener('resize', this.menuCollapseWithResize);
+
+    const currentPath = window.location.pathname;
+    if(currentPath.indexOf('editar') > -1) {
+      this.toggleMenu()
+    }
   }
 
   // Sidebar toggle
@@ -121,6 +132,7 @@ class SidebarMenuRouters extends Component {
           }
           <div className={pageContent}>
             {/* <StyleSwitcher/> */}
+            <RouterOrientation />
             <RoutesComponent />
             {/* <Footer /> */}
           </div>

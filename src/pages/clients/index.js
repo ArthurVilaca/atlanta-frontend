@@ -5,6 +5,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import TextField from 'material-ui/TextField';
 
 import moment from 'moment';
 
@@ -40,6 +41,13 @@ class Clients extends Component {
     render() {
         return (
             <div className="content">
+                <div className="search-clients">
+                    <TextField
+                        id="name"
+                        onChange={this.handleChangeUserName}
+                        floatingLabelText="Pesquisar"
+                        fullWidth={true} />
+                </div>
                 {
                     this.state.clients.map( (client) => {
                         return (

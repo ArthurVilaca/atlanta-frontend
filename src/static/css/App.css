@@ -631,7 +631,9 @@ input[type="button"].btn-block {
 .readmin-page-content {
   position: relative;
   width: 100%;
-  padding: 30px;
+  background-color: lightblue;
+  padding: 10px;
+  min-height: 100vh;
   padding-top: 100px;
   transition: all 0.3s ease; }
   @media (max-width: 520px) {

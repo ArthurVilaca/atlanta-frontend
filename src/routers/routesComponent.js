@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Route, Redirect} from 'react-router-dom';
 
 // defaults
-import Home from '../pages/home.js';
+import Home from '../pages/home';
 
 // projects
 import Login from '../pages/login/index.js';

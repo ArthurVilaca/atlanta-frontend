@@ -83,7 +83,6 @@ class Edit extends Component {
 
     handleChangeInput = (event) => {
         var files = event.target.files;
-        var photo;
         var fd = new FormData();
         if(files[0].size <= 2048000) {
             fd.append('midia', files[0]);
@@ -158,7 +157,7 @@ class Edit extends Component {
                                                     // this.pushComponent(component)
                                                 }}
                                                 >
-                                                <img className="preview-img" src={img.url}/> 
+                                                <img alt="" className="preview-img" src={img.url}/> 
                                             </div>
                                         );
                                     })

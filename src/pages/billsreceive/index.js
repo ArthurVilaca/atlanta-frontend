@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
-import { Card, CardActions, CardTitle, CardText } from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-
-import moment from 'moment';
 
 import Service from '../../service';
 

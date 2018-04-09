@@ -3,6 +3,7 @@
   width: 100%;
   padding: 10px;
   padding-top: $padding-large * 3 + 10;
+  background-color: lightblue;
   @include transition();
 
   @media (max-width: 520px) {

@@ -33,13 +33,53 @@ class RoutesList extends Component {
 
           {
             ( this.state.user.user_type === "D" || this.state.user.user_type === "U" ) && 
-            <li className="has-child">
-              <a href=""><span className="material-icons">shopping_cart</span>Clientes</a>
-              <ul className="child-menu">
-                <li><Link to="/clientes">Listar Clientes</Link></li>
-                <li><Link to="/clientes/novo">Novo Clientes</Link></li>
-              </ul>
-            </li>
+            <div>
+              <li className="divider"></li>
+              <li className="has-child">
+                <a href=""><span className="material-icons">shopping_cart</span>Assinantes</a>
+                <ul className="child-menu">
+                  <li><Link to="/clientes">Listar Clientes</Link></li>
+                  <li><Link to="/clientes/novo">Novo Clientes</Link></li>
+                </ul>
+              </li>
+            </div>
+          }
+
+          {
+            this.state.user.user_type === "D" && 
+            <div>
+              <li className="divider"></li>
+              <li className="has-child">
+                <a href=""><span className="material-icons">folder</span>Faturamento</a>
+                <ul className="child-menu">
+                  <li><Link to="/contasareceber">Contas a receber</Link></li>
+                </ul>
+              </li>
+            </div>
+          }
+
+          {
+            this.state.user.user_type === "D" && 
+            <div>
+              <li className="divider"></li>
+              <li className="has-child">
+                <a href=""><span className="material-icons">folder</span>Suporte</a>
+                <ul className="child-menu">
+                </ul>
+              </li>
+            </div>
+          }
+
+          {
+            this.state.user.user_type === "D" && 
+            <div>
+              <li className="divider"></li>
+              <li className="has-child">
+                <a href=""><span className="material-icons">folder</span>Configurações</a>
+                <ul className="child-menu">
+                </ul>
+              </li>
+            </div>
           }
 
           {
