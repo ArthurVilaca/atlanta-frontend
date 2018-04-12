@@ -9,9 +9,11 @@ class Billsreceive extends Component {
     constructor(props) {
         super(props);
         this.service = new Service();
-        this.service.setToken(localStorage.getItem('token'))
+        this.service.setToken(localStorage.getItem('token'));
+        var user = JSON.parse(localStorage.getItem('login-info'));
         this.state = {
-            billsreceives: []
+            billsreceives: [],
+            user: user
         }
         this.loadBillsreceive()
     }
@@ -51,14 +53,18 @@ class Billsreceive extends Component {
                         )
                     })
                 }
-                <FloatingActionButton
-                    secondary={true}
-                    className="float-button-pages"
-                    onClick={() => {
-                        this.generateBills()
-                    }} >
-                    Gerar Contas
-                </FloatingActionButton>
+
+                {
+                    this.state.user.user_type === "U" &&
+                        <FloatingActionButton
+                            secondary={true}
+                            className="float-button-pages"
+                            onClick={() => {
+                                this.generateBills()
+                            }} >
+                            Gerar Contas
+                        </FloatingActionButton>
+                }
             </div>
         );
     }
