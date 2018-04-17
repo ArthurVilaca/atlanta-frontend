@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 
-class Home extends Component {
+class RouterOrientation extends Component {
   constructor(props) {
     super(props);
     this.state = null
@@ -14,11 +14,11 @@ class Home extends Component {
       <div style={{fontSize: '12px'}}>
           {
             pages.map((page, id) => {
-                if(page === '') {
-                    return 'Navegar: ';
-                }
-                current_url += '/' + page;
-                return  <a key={id} href={current_url}>/{page}</a>
+              if(page === '') {
+                  return 'Navegar: ';
+              }
+              current_url += '/' + page;
+              return  <a key={id} href={current_url}>/{page}</a>
             })
           }
       </div>
@@ -26,4 +26,4 @@ class Home extends Component {
   }
 }
 
-export default withRouter(Home);
+export default withRouter(RouterOrientation);

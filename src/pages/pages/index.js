@@ -111,7 +111,11 @@ class Pages extends Component {
         this.service.post(this.state.urlApi, this.state.newPage)
             .then((response) => {
                 if(response.data.message.type === "S") {
-                    this.props.history.push('/paginas/' + response.data.dataset.Page.id + '/editar' )
+                    if(this.state.user.user_type === "D") {
+                        window.location.assign('/clientes/' + this.props.match.params.id + '/paginas/' + response.data.dataset.Page.id + '/editar');
+                    } else {
+                        window.location.assign('/paginas/' + response.data.dataset.Page.id + '/editar');
+                    }
                 }
             })
             .catch((error) => {
@@ -135,10 +139,9 @@ class Pages extends Component {
 
     openPage(id) {
         if(this.state.user.user_type === "D") {
-            console.log('/clientes/' + this.props.match.params.id + '/paginas/' + id + '/editar')
-            this.props.history.push('/clientes/' + this.props.match.params.id + '/paginas/' + id + '/editar' )
+            window.location.assign('/clientes/' + this.props.match.params.id + '/paginas/' + id + '/editar');
         } else if(this.state.user.user_type === "C") {
-            this.props.history.push('/paginas/' + id + '/editar' )
+            window.location.assign('/paginas/' + id + '/editar');
         }
     }
 
