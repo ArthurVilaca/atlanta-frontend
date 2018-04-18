@@ -21,7 +21,7 @@ class Service {
             }
         }
 
-        if(!token && currentPath === "/") {
+        if(!token && ( currentPath === "/" || currentPath === "/#" || currentPath === "#/")) {
             return window.location.assign('/#/login')
         } else if( !this.isSpecificPage(currentPath) && !token) {
             return window.location.assign('/#/login')
