@@ -41,42 +41,31 @@ class Profile extends Component {
     render() {
         return (
             <div>
-                <div className="login-wrapper">
-                    <div className="login-fields">
-                        <h3>Meu Perfil</h3>
-                        <TextField
-                            id="user-name"
-                            floatingLabelText="Usuario"
-                            defaultValue={this.state.username}
-                            onChange={this.handleChangeUserName}
-                            fullWidth={true}
-                            />
-                        <TextField
-                            id="last-name"
-                            floatingLabelText="Nome do Cliente"
-                            defaultValue={this.state.name}
-                            onChange={this.handleChangeName}
-                            fullWidth={true}
-                            />
-                        <TextField
-                            id="pass"
-                            defaultValue={this.state.password}
-                            onChange={this.handleChangePassword}
-                            floatingLabelText="Password"
-                            fullWidth={true}
-                            type="password"
-                            />
+                <h3>Meu Perfil</h3>
+                <TextField
+                    id="user-name"
+                    floatingLabelText="Usuario"
+                    defaultValue={this.state.username}
+                    onChange={this.handleChangeUserName}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="pass"
+                    defaultValue={this.state.password}
+                    onChange={this.handleChangePassword}
+                    floatingLabelText="Password"
+                    fullWidth={true}
+                    type="password"
+                    />
 
-                        <div className="pt20">
-                            <RaisedButton
-                                label="Salvar"
-                                primary={true}
-                                onClick={() => {
-                                    this.saveProfile()
-                                }}
-                                fullWidth={true}/>
-                        </div>
-                    </div>
+                <div className="pt20">
+                    <RaisedButton
+                        label="Salvar"
+                        primary={true}
+                        onClick={() => {
+                            this.saveProfile()
+                        }}
+                        fullWidth={true}/>
                 </div>
             </div>
         );

@@ -631,7 +631,7 @@ input[type="button"].btn-block {
 .readmin-page-content {
   position: relative;
   width: 100%;
-  background-color: lightblue;
+  /* background-color: lightblue; */
   padding: 10px;
   min-height: 100vh;
   padding-top: 100px;
@@ -662,7 +662,7 @@ input[type="button"].btn-block {
   width: 100%;
   left: 0;
   top: 0;
-  background: #fff;
+  background: #258df2;
   padding: 10px 20px;
   z-index: 1300;
   display: flex;

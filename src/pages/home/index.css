@@ -1,5 +1,18 @@
 .icon-home {
     min-height: 240px !important;
+    /* background-color: lightgray; */
+    padding: 5px;
+    text-align: center;
+}
+
+.home-icon {
+    font-size: 140px;
+    text-align: center;
+}
+
+.home-item {
     background-color: lightgray;
-    margin: 5px;
+    border-radius: 10px;
+    height: 100%;
+    padding: 30px;
 }

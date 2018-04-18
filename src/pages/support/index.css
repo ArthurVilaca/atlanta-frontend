@@ -1,4 +1,11 @@
 .suport {
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.chat {
     padding: 42px;
     text-align: center;
     font-size: 42px;
