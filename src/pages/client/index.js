@@ -97,56 +97,52 @@ class Client extends Component {
         let client = this.state;
         return (
             <div>
-                <div className="login-wrapper">
-                    <div className="login-fields">
-                        <h3>Cadastro de Cliente</h3>
-                        <TextField
-                            id="user-name"
-                            floatingLabelText="Usuario"
-                            defaultValue={client.username}
-                            onChange={this.handleChangeUserName}
-                            fullWidth={true}
-                            />
-                        <TextField
-                            id="last-name"
-                            floatingLabelText="Nome do Cliente"
-                            defaultValue={client.name}
-                            onChange={this.handleChangeName}
-                            fullWidth={true}
-                            />
-                        <TextField
-                            id="company-name"
-                            floatingLabelText="Nome da Empresa"
-                            defaultValue={client.company_branch}
-                            onChange={this.handleChangeCompanyBranch}
-                            fullWidth={true}
-                            />
-                        <TextField
-                            id="CNPj"
-                            defaultValue={client.registration_code}
-                            onChange={this.handleChangeRegistrationCode}
-                            floatingLabelText="CNPj"
-                            fullWidth={true}
-                            />
-                        <TextField
-                            id="pass"
-                            defaultValue={client.password}
-                            onChange={this.handleChangePassword}
-                            floatingLabelText="Password"
-                            fullWidth={true}
-                            type="password"
-                            />
+                <h3>Cadastro de Cliente</h3>
+                <TextField
+                    id="user-name"
+                    floatingLabelText="Usuario"
+                    defaultValue={client.username}
+                    onChange={this.handleChangeUserName}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="last-name"
+                    floatingLabelText="Nome do Cliente"
+                    defaultValue={client.name}
+                    onChange={this.handleChangeName}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="company-name"
+                    floatingLabelText="Nome da Empresa"
+                    defaultValue={client.company_branch}
+                    onChange={this.handleChangeCompanyBranch}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="CNPj"
+                    defaultValue={client.registration_code}
+                    onChange={this.handleChangeRegistrationCode}
+                    floatingLabelText="CNPj"
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="pass"
+                    defaultValue={client.password}
+                    onChange={this.handleChangePassword}
+                    floatingLabelText="Password"
+                    fullWidth={true}
+                    type="password"
+                    />
 
-                        <div className="pt20">
-                            <RaisedButton
-                                label="Salvar"
-                                primary={true}
-                                onClick={() => {
-                                    this.doRegisterClient()
-                                }}
-                                fullWidth={true}/>
-                        </div>
-                    </div>
+                <div className="pt20">
+                    <RaisedButton
+                        label="Salvar"
+                        primary={true}
+                        onClick={() => {
+                            this.doRegisterClient()
+                        }}
+                        fullWidth={true}/>
                 </div>
             </div>
         );

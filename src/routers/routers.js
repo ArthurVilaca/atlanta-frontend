@@ -8,7 +8,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Drawer from 'material-ui/Drawer';
 import classNames from 'classnames';
-import {BrowserRouter as Router} from 'react-router-dom'
+import {BrowserRouter as Router, HashRouter} from 'react-router-dom'
 import RoutesList from './routesList.js';
 import RoutesComponent from './routesComponent.js';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -43,7 +43,7 @@ class SidebarMenuRouters extends Component {
       this.setState({menuOpen: false});
     }
 
-    const currentPath = window.location.pathname;
+    const currentPath = window.location.pathname + window.location.hash;
     if(currentPath.indexOf('editar') > -1) {
       this.toggleMenu()
     }
@@ -53,7 +53,7 @@ class SidebarMenuRouters extends Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.menuCollapseWithResize);
 
-    const currentPath = window.location.pathname;
+    const currentPath = window.location.pathname + window.location.hash;
     if(currentPath.indexOf('editar') > -1) {
       this.toggleMenu()
     }
@@ -67,12 +67,12 @@ class SidebarMenuRouters extends Component {
   }
 
   isSpecificPage(route) {
-    const routes = ['/login', '/registrar/revendedor']
+    const routes = ['/#/login', '/#/registrar/revendedor']
     return routes.indexOf(route) > -1;
   }
 
   render() {
-    const currentPath = window.location.pathname;
+    const currentPath = window.location.pathname + window.location.hash;
 
     const headerStyle = {
       background: this.props.colorHeader.color
@@ -113,8 +113,9 @@ class SidebarMenuRouters extends Component {
       </div>
     );
 
+    console.log(currentPath);
     return (
-      <Router>
+      <HashRouter>
         <div>
           { !this.isSpecificPage(currentPath) && 
             <div className="readmin-sidebar">
@@ -139,7 +140,7 @@ class SidebarMenuRouters extends Component {
             {/* <Footer /> */}
           </div>
         </div>
-      </Router>
+      </HashRouter>
     );
   }
 }

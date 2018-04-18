@@ -28,7 +28,7 @@ class RoutesList extends Component {
       <div className="sidebar-nav">
         <ul>
           <li>
-            <Link to="/"><span className="material-icons">dashboard</span>Dashboard</Link>
+            <Link to="/home"><span className="material-icons">dashboard</span>Dashboard</Link>
           </li>
 
           {

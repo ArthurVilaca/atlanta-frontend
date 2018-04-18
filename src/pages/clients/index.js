@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import classNames from 'classnames';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
@@ -39,6 +40,13 @@ class Clients extends Component {
     }
 
     render() {
+        const tableClass = classNames({
+            'table': true,
+            'table-striped': true,
+            'table-bordered': true,
+            'table-hover': true,
+            'table-condensed': true
+        });
         return (
             <div className="content">
                 <div className="search-clients">
@@ -48,33 +56,46 @@ class Clients extends Component {
                         floatingLabelText="Pesquisar"
                         fullWidth={true} />
                 </div>
-                {
-                    this.state.clients.map( (client) => {
-                        return (
-                            <Card key={client.id}>
-                                <CardTitle title={ client.company_branch } />
-                                <CardText>
-                                    CNPJ: { client.registration_code }
-                                    <br />
-                                    Data Registro: { moment(client.created_at).format('L') }
-                                </CardText>
-                                <CardActions>
-                                    <FlatButton
-                                        label="Editar"
-                                        onClick={() => {
-                                            this.props.history.push('/clientes/' + client.id )
-                                        }} />
-                                    <FlatButton
-                                        label="Paginas"
-                                        onClick={() => {
-                                            this.props.history.push('/clientes/' + client.id + '/paginas')
-                                        }}
-                                        />
-                                </CardActions>
-                            </Card>
-                        )
-                    })
-                }
+                <table className={tableClass}>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Status</th>
+                            <th>Ativação</th>
+                            <th>Editar</th>
+                            <th>Paginas</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.state.clients.map( (client) => {
+                                return (
+                                    <tr key={client.id}>
+                                        <td>{ client.company_branch }</td>
+                                        <td>{ client.company_branch }</td>
+                                        <td>{ client.company_branch }</td>
+                                        <td 
+                                            onClick={() => {
+                                                this.props.history.push('/clientes/' + client.id )
+                                            }} >
+                                            <i class="fas fa-edit"></i>
+                                        </td>
+                                        <td
+                                            onClick={() => {
+                                                this.props.history.push('/clientes/' + client.id + '/paginas')
+                                            }} >
+                                            <i class="far fa-file"></i>
+                                        </td>
+                                        <td>
+                                            <i class="fas fa-trash"></i>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                </table>
 
                 <FloatingActionButton
                     secondary={true}

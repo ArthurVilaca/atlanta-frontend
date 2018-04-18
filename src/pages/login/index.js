@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
 
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -29,11 +30,11 @@ class Login extends Component {
                     myResponse.dataset.expiration_date = date.getTime();
                     localStorage.setItem('login-info', JSON.stringify(myResponse.dataset))
                     if(myResponse.dataset.user_type === 'D') {
-                        window.location.assign('/clientes')
+                        window.location.assign('/#/clientes')
                     } else if(myResponse.dataset.user_type === 'C') {
-                        window.location.assign('/paginas')
+                        window.location.assign('/#/paginas')
                     } else if(myResponse.dataset.user_type === 'U') {
-                        window.location.assign('/home')
+                        window.location.assign('/#/home')
                     }
                 } else {
                     console.log(myResponse);

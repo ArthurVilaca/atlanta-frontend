@@ -3,7 +3,7 @@
   width: 100%;
   padding: 10px;
   padding-top: $padding-large * 3 + 10;
-  background-color: lightblue;
+  // background-color: lightblue;
   @include transition();
 
   @media (max-width: 520px) {
@@ -12,7 +12,7 @@
   }
 
   &.menu-open {
-    padding-left: 256 + $padding-large;
+    padding-left: 236 + $padding-large;
 
     @media (max-width: 991px) {
       padding-left: $padding-large;

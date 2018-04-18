@@ -6,30 +6,30 @@ class Service {
             'token': ''
         }
 
-        const currentPath = window.location.pathname;
+        const currentPath = window.location.pathname + window.location.hash;
         let token = localStorage.getItem('token')
         
         let loginInfo = localStorage.getItem('login-info')
         if(!loginInfo && !this.isSpecificPage(currentPath)) {
-            return window.location.assign('/login')
+            return window.location.assign('/#/login')
         }
 
         if(!this.isSpecificPage(currentPath)) {
             loginInfo = JSON.parse(loginInfo);
             if(new Date(loginInfo.expiration_date) < new Date()) {
-                return window.location.assign('/login')
+                return window.location.assign('/#/login')
             }
         }
 
         if(!token && currentPath === "/") {
-            return window.location.assign('/login')
+            return window.location.assign('/#/login')
         } else if( !this.isSpecificPage(currentPath) && !token) {
-            return window.location.assign('/login')
+            return window.location.assign('/#/login')
         }
     }
 
     isSpecificPage(route) {
-        const routes = ['/login', '/registrar/revendedor']
+        const routes = ['/#/login', '/#/registrar/revendedor']
         return routes.indexOf(route) > -1;
     }
 
