@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Route, Redirect} from 'react-router-dom';
+import {Route, Redirect, HashRouter} from 'react-router-dom';
 
 // defaults
 import Home from '../pages/home';
@@ -23,15 +23,17 @@ import Billsreceive from '../pages/billsreceive';
 
 class RoutesComponent extends Component {
   render() {
-    const currentPath = window.location.pathname;
+    const currentPath = window.location.pathname + window.location.hash;
     let token = localStorage.getItem('token')
     if(!token && currentPath === "/") {
-      window.location.assign('/login')
+      window.location.assign('/#/login')
     } else if(currentPath === "/") {
-      window.location.assign('/home')
+      window.location.assign('/#/home')
     }
     return (
       <div>
+        <HashRouter basename="/"/>
+
         <Route exact path="/Default" component={Home}/>
         <Route exact path="/home" component={Home}/>
         <Route exact path="/login" component={Login}/>

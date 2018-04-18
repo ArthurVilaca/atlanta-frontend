@@ -25,7 +25,7 @@ class RegisterDealer extends Component {
             .then((response) => {
                 let myResponse = response.data;
                 if(myResponse.message.type === 'S') {
-                    this.props.history.push('/login' )
+                    this.props.history.push('/#/login' )
                 } else {
                     console.log(myResponse);
                     console.log('error');
