@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import classNames from 'classnames';
 
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
@@ -41,18 +42,45 @@ class Billsreceive extends Component {
     }
 
     render() {
+        const tableClass = classNames({
+            'table': true,
+            'table-striped': true,
+            'table-bordered': true,
+            'table-hover': true,
+            'table-condensed': true
+        });
         return (
             <div className="content">
                 <div>
                     Contas a Receber
                 </div>
-                {
-                    this.state.billsreceives.map( (billsreceive) => {
-                        return (
-                            <div></div>
-                        )
-                    })
-                }
+                
+                <table className={tableClass}>
+                    <thead>
+                        <tr>
+                            <th>Site</th>
+                            <th>Valor</th>
+                            <th>Status</th>
+                            <th>Data Pgto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            this.state.billsreceives.map( (billsreceive) => {
+                                return (
+                                    <div></div>
+                                )
+                            })
+                        }
+
+                        <tr key="2">
+                            <td>Site ABC</td>
+                            <td>R$ 21,00</td>
+                            <td>A receber</td>
+                            <td>21/07/2018</td>
+                        </tr>
+                    </tbody>
+                </table>
 
                 {
                     this.state.user.user_type === "U" &&
