@@ -25,9 +25,9 @@ class RoutesComponent extends Component {
   render() {
     const currentPath = window.location.pathname + window.location.hash;
     let token = localStorage.getItem('token')
-    if(!token && currentPath === "/") {
+    if(!token && (currentPath === "/" || currentPath === "/#" || currentPath === "#/")) {
       window.location.assign('/#/login')
-    } else if(currentPath === "/") {
+    } else if(currentPath === "/" || currentPath === "/#" || currentPath === "#/") {
       window.location.assign('/#/home')
     }
     return (
