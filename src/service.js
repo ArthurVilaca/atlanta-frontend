@@ -44,7 +44,7 @@ class Service {
     }
 
     get = (url) => {
-        return axios.get(url, { headers: this.state })
+        return axios.get('index.php/api' + url, { headers: this.state })
             .then((response) => {
                 return this.validateRequest(response);
             })
@@ -54,7 +54,7 @@ class Service {
     }
 
     post = (url, data) => {
-        return axios.post(url, data, { headers: this.state })
+        return axios.post('index.php/api' + url, data, { headers: this.state })
             .then((response) => {
                 return this.validateRequest(response);
             })
@@ -64,7 +64,7 @@ class Service {
     }
 
     put = (url, data) => {
-        return axios.put(url, data, { headers: this.state })
+        return axios.put('index.php/api' + url, data, { headers: this.state })
             .then((response) => {
                 return this.validateRequest(response);
             })
