@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Route, Redirect, HashRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 
 // defaults
 import Home from '../pages/home';
@@ -17,6 +18,7 @@ import Dealers from '../pages/dealers';
 import Dealer from '../pages/dealer';
 import Suport from '../pages/support';
 import DealerConfig from '../pages/dealer_config';
+import Payment from '../pages/payment';
 
 import Billspay from '../pages/billspay';
 import Billsreceive from '../pages/billsreceive';
@@ -25,10 +27,12 @@ class RoutesComponent extends Component {
   render() {
     const currentPath = window.location.pathname + window.location.hash;
     let token = localStorage.getItem('token')
-    if(!token && (currentPath === "/" || currentPath === "/#" || currentPath === "#/")) {
-      window.location.assign('/#/login')
-    } else if(currentPath === "/" || currentPath === "/#" || currentPath === "#/") {
-      window.location.assign('/#/home')
+    if(!token && (currentPath === "/" || currentPath === "/#" || currentPath === "/#/")) {
+      this.props.history.push('/login')
+      window.location.reload();
+    } else if(currentPath === "/" || currentPath === "/#" || currentPath === "/#/") {
+      this.props.history.push('/home')
+      window.location.reload();
     }
     return (
       <div>
@@ -54,9 +58,10 @@ class RoutesComponent extends Component {
         <Route exact path="/contasareceber" component={Billsreceive}/>
         <Route exact path="/suporte" component={Suport}/>
         <Route exact path="/revendedor/config" component={DealerConfig}/>
+        <Route exact path="/pagamento" component={Payment}/>
       </div>
     );
   }
 }
 
-export default RoutesComponent;
+export default withRouter(RoutesComponent);

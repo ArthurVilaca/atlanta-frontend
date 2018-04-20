@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom'
 
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -27,6 +28,7 @@ class AvatarDropdown extends Component {
     localStorage.removeItem('token')
     localStorage.removeItem('login-info')
     window.location.assign('/#/login')
+    window.location.reload();
   }
 
   render() {

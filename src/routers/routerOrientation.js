@@ -8,13 +8,14 @@ class RouterOrientation extends Component {
   }
 
   render() {
-    let pages = window.location.pathname.split('/');
-    let current_url = '';
+    let pages = window.location.hash.split('/');
+    console.log(pages)
+    let current_url = '#';
     return (
       <div style={{fontSize: '12px'}}>
           {
             pages.map((page, id) => {
-              if(page === '') {
+              if(page === '#') {
                   return 'Navegar: ';
               }
               current_url += '/' + page;
