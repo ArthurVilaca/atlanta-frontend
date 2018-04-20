@@ -11,13 +11,15 @@ class Service {
         
         let loginInfo = localStorage.getItem('login-info')
         if(!loginInfo && !this.isSpecificPage(currentPath)) {
-            return window.location.assign('/#/login')
+            window.location.assign('/#/login')
+            return window.location.reload();
         }
 
         if(!this.isSpecificPage(currentPath)) {
             loginInfo = JSON.parse(loginInfo);
             if(new Date(loginInfo.expiration_date) < new Date()) {
-                return window.location.assign('/#/login')
+                window.location.assign('/#/login')
+                return window.location.reload();
             }
         }
 
@@ -29,7 +31,11 @@ class Service {
     }
 
     isSpecificPage(route) {
-        const routes = ['/#/login', '/#/registrar/revendedor']
+        let reset = '/#/resetarminhasenha';
+        if(route.indexOf(reset) > -1) {
+            return true;
+        }
+        const routes = ['/#/login', '/#/registrar/revendedor', '/#/esqueciminhasenha', '/#/resetarminhasenha']
         return routes.indexOf(route) > -1;
     }
 

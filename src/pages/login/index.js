@@ -62,7 +62,7 @@ class Login extends Component {
             <div>
                 <div className="login-wrapper">
                     <div className="login-fields">
-                        <h3>Login <a href="">Esqueceu sua senha?</a></h3>
+                        <h3>Login <a href="/#/esqueciminhasenha">Esqueceu sua senha?</a></h3>
                         <TextField
                             id="name"
                             onChange={this.handleChangeUserName}

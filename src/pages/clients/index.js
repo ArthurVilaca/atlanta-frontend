@@ -72,22 +72,22 @@ class Clients extends Component {
                             this.state.clients.map( (client) => {
                                 return (
                                     <tr key={client.id}>
-                                        <td>{ client.company_branch }</td>
-                                        <td>{ client.company_branch }</td>
-                                        <td>{ client.company_branch }</td>
-                                        <td 
+                                        <td>{ client.user.name }</td>
+                                        <td>{ client.user.status }</td>
+                                        <td>{ client.user.created_at }</td>
+                                        <td className="clickable"
                                             onClick={() => {
                                                 this.props.history.push('/clientes/' + client.id )
                                             }} >
                                             <i className="fas fa-edit"></i>
                                         </td>
-                                        <td
+                                        <td className="clickable"
                                             onClick={() => {
                                                 this.props.history.push('/clientes/' + client.id + '/paginas')
                                             }} >
                                             <i className="far fa-file"></i>
                                         </td>
-                                        <td>
+                                        <td className="clickable">
                                             <i className="fas fa-trash"></i>
                                         </td>
                                     </tr>

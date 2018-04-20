@@ -19,9 +19,13 @@ import Dealer from '../pages/dealer';
 import Suport from '../pages/support';
 import DealerConfig from '../pages/dealer_config';
 import Payment from '../pages/payment';
+import Analitics from '../pages/analitics';
 
 import Billspay from '../pages/billspay';
 import Billsreceive from '../pages/billsreceive';
+
+import ForgotPassword from '../pages/forgot-password';
+import ResetPassword from '../pages/reset-password';
 
 class RoutesComponent extends Component {
   render() {
@@ -59,6 +63,9 @@ class RoutesComponent extends Component {
         <Route exact path="/suporte" component={Suport}/>
         <Route exact path="/revendedor/config" component={DealerConfig}/>
         <Route exact path="/pagamento" component={Payment}/>
+        <Route exact path="/analitics" component={Analitics}/>
+        <Route exact path="/esqueciminhasenha" component={ForgotPassword}/>
+        <Route exact path="/resetarminhasenha/:id" component={ResetPassword}/>
       </div>
     );
   }
