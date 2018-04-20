@@ -11,18 +11,25 @@ import Service from '../../service';
 class ResetPassword extends Component {
     constructor(props) {
         super(props);
+        console.log('asasdasd')
         this.service = new Service();
         this.state = {
-            email: ''
+            password: '',
+            password2: '',
+            token: this.props.match.params.id
         }
     }
 
     sendResetToken() {
+        if(this.state.password !== this.state.password2) {
+            return console.log('Senhas divergentes')
+        }
+
         this.service.post('/resetPassword', this.state)
             .then((response) => {
                 let myResponse = response.data;
                 if(myResponse.message.type === 'S') {
-                    
+                    this.props.history.push('/login' )
                 } else {
                     console.log(myResponse);
                     console.log('error');
@@ -33,8 +40,12 @@ class ResetPassword extends Component {
             })
     }
 
-    handleChangeEmail = (event) => {
-        this.setState({email: event.target.value });
+    handleChangePassword = (event) => {
+        this.setState({password: event.target.value });
+    }
+
+    handleChangePassword2 = (event) => {
+        this.setState({password2: event.target.value });
     }
 
     render() {
@@ -42,17 +53,26 @@ class ResetPassword extends Component {
             <div>
                 <div className="login-wrapper">
                     <div className="login-fields">
-                        <h3>Esqueceu sua senha</h3>
+                        <h3>cadastrar nova senha</h3>
                         <TextField
-                            id="email"
-                            onChange={this.handleChangeEmail}
-                            defaultValue={this.state.email}
-                            floatingLabelText="Email"
+                            id="password-1"
+                            type="password"
+                            onChange={this.handleChangePassword}
+                            defaultValue={this.state.password}
+                            floatingLabelText="Senha"
+                            fullWidth={true}
+                        />
+                        <TextField
+                            id="password-2"
+                            type="password"
+                            onChange={this.handleChangePassword2}
+                            defaultValue={this.state.password2}
+                            floatingLabelText="Confirmar a senha"
                             fullWidth={true}
                         />
                         <div className="pt20">
                             <RaisedButton
-                                label="Login"
+                                label="Confirmar"
                                 onClick={() => {
                                     this.sendResetToken()
                                 }}

@@ -18,6 +18,10 @@ const muiTheme = getMuiTheme({
 class App extends Component {
 
   isSpecificPage(route) {
+    let reset = '/#/resetarminhasenha';
+    if(route.indexOf(reset) > -1) {
+        return true;
+    }
     const routes = ['/#/login', '/#/registrar/revendedor', '/#/esqueciminhasenha', '/#/resetarminhasenha']
     return routes.indexOf(route) > -1;
   }
