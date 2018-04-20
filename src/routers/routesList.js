@@ -129,7 +129,7 @@ class RoutesList extends Component {
           <li className="has-child">
             <a href=""><span className="material-icons">folder</span>Analitics</a>
             <ul className="child-menu">
-              {/* <li><Link to="/ui-kit/buttons">Ganhos</Link></li> */}
+              <li><Link to="/analitics">Indicadores</Link></li>
             </ul>
           </li>
         </ul>

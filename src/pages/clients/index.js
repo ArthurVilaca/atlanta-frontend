@@ -75,19 +75,19 @@ class Clients extends Component {
                                         <td>{ client.company_branch }</td>
                                         <td>{ client.company_branch }</td>
                                         <td>{ client.company_branch }</td>
-                                        <td 
+                                        <td className="clickable"
                                             onClick={() => {
                                                 this.props.history.push('/clientes/' + client.id )
                                             }} >
                                             <i className="fas fa-edit"></i>
                                         </td>
-                                        <td
+                                        <td className="clickable"
                                             onClick={() => {
                                                 this.props.history.push('/clientes/' + client.id + '/paginas')
                                             }} >
                                             <i className="far fa-file"></i>
                                         </td>
-                                        <td>
+                                        <td className="clickable">
                                             <i className="fas fa-trash"></i>
                                         </td>
                                     </tr>
