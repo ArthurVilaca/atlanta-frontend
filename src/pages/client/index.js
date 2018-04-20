@@ -30,6 +30,15 @@ class Client extends Component {
                     let client = response.data.dataset.client;
                     client.name = response.data.dataset.user.name;
                     client.username = response.data.dataset.user.username;
+                    client.phone = response.data.dataset.user.phone;
+                    client.email = response.data.dataset.user.email;
+                    client.adress = response.data.dataset.user.adress;
+                    client.adress_number = response.data.dataset.user.adress_number;
+                    client.adress_complement = response.data.dataset.user.adress_complement;
+                    client.adress_district = response.data.dataset.user.adress_district;
+                    client.zip_code = response.data.dataset.user.zip_code;
+                    client.city = response.data.dataset.user.city;
+                    client.state = response.data.dataset.user.state;
                     this.setState(client);
                 }
             })
@@ -54,8 +63,40 @@ class Client extends Component {
         this.setState({name: event.target.value });
     }
 
-    handleChangeCompanyBranch = (event) => {
-        this.setState({company_branch: event.target.value });
+    handleChangePhone = (event) => {
+        this.setState({phone: event.target.value });
+    }
+
+    handleChangeEmail = (event) => {
+        this.setState({email: event.target.value });
+    }
+
+    handleChangeAdress = (event) => {
+        this.setState({adress: event.target.value });
+    }
+
+    handleChangeAdressNumber = (event) => {
+        this.setState({adress_number: event.target.value });
+    }
+
+    handleChangeAdressComplement = (event) => {
+        this.setState({adress_complement: event.target.value });
+    }
+
+    handleChangeAdressDistrict = (event) => {
+        this.setState({adress_district: event.target.value });
+    }
+
+    handleChangeZipCode = (event) => {
+        this.setState({zip_code: event.target.value });
+    }
+
+    handleChangeCity = (event) => {
+        this.setState({city: event.target.value });
+    }
+
+    handleChangeState = (event) => {
+        this.setState({state: event.target.value });
     }
 
     doRegisterClient = () => {
@@ -64,7 +105,7 @@ class Client extends Component {
                 .then((response) => {
                     let myResponse = response.data;
                     if(myResponse.message.type === 'S') {
-                        window.location.assign('/clientes')
+                        this.props.history.push('/clientes')
                     } else {
                         console.log(myResponse);
                         console.log('error');
@@ -78,7 +119,7 @@ class Client extends Component {
                 .then((response) => {
                     let myResponse = response.data;
                     if(myResponse.message.type === 'S') {
-                        window.location.assign('/clientes')
+                        this.props.history.push('/clientes')
                     } else {
                         console.log(myResponse);
                         console.log('error');
@@ -106,17 +147,24 @@ class Client extends Component {
                     fullWidth={true}
                     />
                 <TextField
-                    id="last-name"
+                    id="client-name"
                     floatingLabelText="Nome do Cliente"
                     defaultValue={client.name}
                     onChange={this.handleChangeName}
                     fullWidth={true}
                     />
                 <TextField
-                    id="company-name"
-                    floatingLabelText="Nome da Empresa"
-                    defaultValue={client.company_branch}
-                    onChange={this.handleChangeCompanyBranch}
+                    id="phone"
+                    floatingLabelText="Telefone"
+                    defaultValue={client.phone}
+                    onChange={this.handleChangePhone}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="email"
+                    floatingLabelText="Email"
+                    defaultValue={client.email}
+                    onChange={this.handleChangeEmail}
                     fullWidth={true}
                     />
                 <TextField
@@ -135,6 +183,55 @@ class Client extends Component {
                     type="password"
                     />
 
+                <TextField
+                    id="adress"
+                    floatingLabelText="Endereço"
+                    defaultValue={client.adress}
+                    onChange={this.handleChangeAdress}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="adress_number"
+                    floatingLabelText="Numero"
+                    defaultValue={client.adress_number}
+                    onChange={this.handleChangeAdressNumber}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="adress_complement"
+                    floatingLabelText="Complemento"
+                    defaultValue={client.adress_complement}
+                    onChange={this.handleChangeAdressComplement}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="adress_district"
+                    floatingLabelText="Bairro"
+                    defaultValue={client.adress_district}
+                    onChange={this.handleChangeAdressDistrict}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="zip_code"
+                    floatingLabelText="CEP"
+                    defaultValue={client.zip_code}
+                    onChange={this.handleChangeZipCode}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="city"
+                    floatingLabelText="Cidade"
+                    defaultValue={client.city}
+                    onChange={this.handleChangeCity}
+                    fullWidth={true}
+                    />
+                <TextField
+                    id="state"
+                    floatingLabelText="Estado"
+                    defaultValue={client.state}
+                    onChange={this.handleChangeState}
+                    fullWidth={true}
+                    />
                 <div className="pt20">
                     <RaisedButton
                         label="Salvar"

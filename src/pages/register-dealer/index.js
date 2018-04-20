@@ -52,6 +52,42 @@ class RegisterDealer extends Component {
         this.setState({name: event.target.value });
     }
 
+    handleChangePhone = (event) => {
+        this.setState({phone: event.target.value });
+    }
+
+    handleChangeEmail = (event) => {
+        this.setState({email: event.target.value });
+    }
+
+    handleChangeAdress = (event) => {
+        this.setState({adress: event.target.value });
+    }
+
+    handleChangeAdressNumber = (event) => {
+        this.setState({adress_number: event.target.value });
+    }
+
+    handleChangeAdressComplement = (event) => {
+        this.setState({adress_complement: event.target.value });
+    }
+
+    handleChangeAdressDistrict = (event) => {
+        this.setState({adress_district: event.target.value });
+    }
+
+    handleChangeZipCode = (event) => {
+        this.setState({zip_code: event.target.value });
+    }
+
+    handleChangeCity = (event) => {
+        this.setState({city: event.target.value });
+    }
+
+    handleChangeState = (event) => {
+        this.setState({state: event.target.value });
+    }
+
     render() {
         return (
             <div>
@@ -73,6 +109,20 @@ class RegisterDealer extends Component {
                             fullWidth={true}
                             />
                         <TextField
+                            id="phone"
+                            floatingLabelText="Telefone"
+                            defaultValue={this.state.phone}
+                            onChange={this.handleChangePhone}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="email"
+                            floatingLabelText="Email"
+                            defaultValue={this.state.email}
+                            onChange={this.handleChangeEmail}
+                            fullWidth={true}
+                            />
+                        <TextField
                             id="CPF"
                             defaultValue={this.state.registration_code}
                             onChange={this.handleChangeRegistrationCode}
@@ -86,6 +136,55 @@ class RegisterDealer extends Component {
                             floatingLabelText="Password"
                             fullWidth={true}
                             type="password"
+                            />
+                        <TextField
+                            id="adress"
+                            floatingLabelText="Endereço"
+                            defaultValue={this.state.adress}
+                            onChange={this.handleChangeAdress}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="adress_number"
+                            floatingLabelText="Numero"
+                            defaultValue={this.state.adress_number}
+                            onChange={this.handleChangeAdressNumber}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="adress_complement"
+                            floatingLabelText="Complemento"
+                            defaultValue={this.state.adress_complement}
+                            onChange={this.handleChangeAdressComplement}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="adress_district"
+                            floatingLabelText="Bairro"
+                            defaultValue={this.state.adress_district}
+                            onChange={this.handleChangeAdressDistrict}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="zip_code"
+                            floatingLabelText="CEP"
+                            defaultValue={this.state.zip_code}
+                            onChange={this.handleChangeZipCode}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="city"
+                            floatingLabelText="Cidade"
+                            defaultValue={this.state.city}
+                            onChange={this.handleChangeCity}
+                            fullWidth={true}
+                            />
+                        <TextField
+                            id="state"
+                            floatingLabelText="Estado"
+                            defaultValue={this.state.state}
+                            onChange={this.handleChangeState}
+                            fullWidth={true}
                             />
 
                         <div className="pt20">

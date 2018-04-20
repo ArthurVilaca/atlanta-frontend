@@ -24,6 +24,9 @@ import Analitics from '../pages/analitics';
 import Billspay from '../pages/billspay';
 import Billsreceive from '../pages/billsreceive';
 
+import ForgotPassword from '../pages/forgot-password';
+import ResetPassword from '../pages/reset-password';
+
 class RoutesComponent extends Component {
   render() {
     const currentPath = window.location.pathname + window.location.hash;
@@ -61,6 +64,8 @@ class RoutesComponent extends Component {
         <Route exact path="/revendedor/config" component={DealerConfig}/>
         <Route exact path="/pagamento" component={Payment}/>
         <Route exact path="/analitics" component={Analitics}/>
+        <Route exact path="/esqueciminhasenha" component={ForgotPassword}/>
+        <Route exact path="/resetarminhasenha/:id" component={ResetPassword}/>
       </div>
     );
   }
