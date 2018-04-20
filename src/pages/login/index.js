@@ -30,11 +30,14 @@ class Login extends Component {
                     myResponse.dataset.expiration_date = date.getTime();
                     localStorage.setItem('login-info', JSON.stringify(myResponse.dataset))
                     if(myResponse.dataset.user_type === 'D') {
-                        window.location.assign('/#/clientes')
+                        this.props.history.push('/clientes')
+                        window.location.reload();
                     } else if(myResponse.dataset.user_type === 'C') {
-                        window.location.assign('/#/paginas')
+                        this.props.history.push('/paginas')
+                        window.location.reload();
                     } else if(myResponse.dataset.user_type === 'U') {
-                        window.location.assign('/#/home')
+                        this.props.history.push('/home')
+                        window.location.reload();
                     }
                 } else {
                     console.log(myResponse);

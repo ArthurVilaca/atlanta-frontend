@@ -79,16 +79,16 @@ class Clients extends Component {
                                             onClick={() => {
                                                 this.props.history.push('/clientes/' + client.id )
                                             }} >
-                                            <i class="fas fa-edit"></i>
+                                            <i className="fas fa-edit"></i>
                                         </td>
                                         <td
                                             onClick={() => {
                                                 this.props.history.push('/clientes/' + client.id + '/paginas')
                                             }} >
-                                            <i class="far fa-file"></i>
+                                            <i className="far fa-file"></i>
                                         </td>
                                         <td>
-                                            <i class="fas fa-trash"></i>
+                                            <i className="fas fa-trash"></i>
                                         </td>
                                     </tr>
                                 )

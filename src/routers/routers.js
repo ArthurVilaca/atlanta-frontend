@@ -47,6 +47,7 @@ class SidebarMenuRouters extends Component {
     if(currentPath.indexOf('editar') > -1) {
       this.toggleMenu()
     }
+    this.forceUpdate()
   }
 
   // Sidebar collapse when tablet
@@ -98,7 +99,7 @@ class SidebarMenuRouters extends Component {
     });
 
     // header left part with logo and toggle button
-    const HeaderLogoWithMenu = () => (
+    let HeaderLogoWithMenu = () => (
       <div className="an-header" style={headerStyle}>
         <div className="header-left">
           <a className="brand" href="/">HTTPLAY</a>
@@ -114,6 +115,8 @@ class SidebarMenuRouters extends Component {
     );
 
     console.log(currentPath);
+    console.log(!this.isSpecificPage(currentPath));
+
     return (
       <HashRouter>
         <div>

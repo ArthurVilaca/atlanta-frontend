@@ -22,7 +22,7 @@ class Home extends Component {
         <div className="row">
           <div className="col-md-4 icon-home">
             <div className="home-item">
-              <a href="/clientes">
+              <a href="/#/clientes">
                 <i className="home-icon fas fa-users"></i>
                 <h3>Assinantes</h3>
               </a>
@@ -30,7 +30,7 @@ class Home extends Component {
           </div>
           <div className="col-md-4 icon-home">
             <div className="home-item">
-              <a href="/contasareceber">
+              <a href="/#/contasareceber">
                 <i className="home-icon far fa-money-bill-alt"></i>
                 <h3>Prospects</h3>
               </a>
@@ -38,7 +38,7 @@ class Home extends Component {
           </div>
           <div className="col-md-4 icon-home">
             <div className="home-item">
-              <a href="/suporte">
+              <a href="/#/suporte">
                 <i className="home-icon fas fa-headphones"></i>
                 <h3>Suporte</h3>
               </a>
@@ -46,7 +46,7 @@ class Home extends Component {
           </div>
           <div className="col-md-4 icon-home">
             <div className="home-item">
-              <a href="/revendedor/config">
+              <a href="/#/revendedor/config">
                 <i className="home-icon fas fa-cogs"></i>
                 <h3>Configurações</h3>
               </a>
@@ -54,7 +54,7 @@ class Home extends Component {
           </div>
           <div className="col-md-4 icon-home">
             <div className="home-item">
-              <a href="/meu-perfil">
+              <a href="/#/meu-perfil">
                 <i className="home-icon fas fa-user"></i>
                 <h3>Meu Perfil</h3>
               </a>
