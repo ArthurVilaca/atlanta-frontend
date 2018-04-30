@@ -59,7 +59,7 @@ class Dealer extends Component {
                 .then((response) => {
                     let myResponse = response.data;
                     if(myResponse.message.type === 'S') {
-                        window.location.assign('/revendedores')
+                        this.props.history.push('/revendedores')
                     } else {
                         console.log(myResponse);
                         console.log('error');
@@ -73,7 +73,7 @@ class Dealer extends Component {
                 .then((response) => {
                     let myResponse = response.data;
                     if(myResponse.message.type === 'S') {
-                        window.location.assign('/revendedores')
+                        this.props.history.push('/revendedores')
                     } else {
                         console.log(myResponse);
                         console.log('error');

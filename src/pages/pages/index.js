@@ -112,9 +112,13 @@ class Pages extends Component {
             .then((response) => {
                 if(response.data.message.type === "S") {
                     if(this.state.user.user_type === "D") {
-                        window.location.assign('/clientes/' + this.props.match.params.id + '/paginas/' + response.data.dataset.Page.id + '/editar');
+                        localStorage.setItem('next-page', '/clientes/' + this.props.match.params.id + '/paginas/' + response.data.dataset.Page.id + '/editar');
+                        this.props.history.push('/pagamento');
+                        // this.props.history.push('/clientes/' + this.props.match.params.id + '/paginas/' + response.data.dataset.Page.id + '/editar');
                     } else {
-                        window.location.assign('/paginas/' + response.data.dataset.Page.id + '/editar');
+                        localStorage.setItem('next-page', '/paginas/' + response.data.dataset.Page.id + '/editar');
+                        this.props.history.push('/pagamento');
+                        // this.props.history.push('/paginas/' + response.data.dataset.Page.id + '/editar');
                     }
                 }
             })
@@ -139,9 +143,9 @@ class Pages extends Component {
 
     openPage(id) {
         if(this.state.user.user_type === "D") {
-            window.location.assign('/clientes/' + this.props.match.params.id + '/paginas/' + id + '/editar');
+            this.props.history.push('/clientes/' + this.props.match.params.id + '/paginas/' + id + '/editar');
         } else if(this.state.user.user_type === "C") {
-            window.location.assign('/paginas/' + id + '/editar');
+            this.props.history.push('/paginas/' + id + '/editar');
         }
     }
 
