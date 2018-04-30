@@ -78,6 +78,16 @@ class Service {
                 console.log('error ' + error);
             });
     }
+
+    delete = (url) => {
+        return axios.delete('index.php/api' + url, { headers: this.state })
+            .then((response) => {
+                return this.validateRequest(response);
+            })
+            .catch((error) => {
+                console.log('error ' + error);
+            });
+    }
   
 }
 

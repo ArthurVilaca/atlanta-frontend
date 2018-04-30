@@ -53,7 +53,7 @@ class AvatarDropdown extends Component {
           <MenuItem
             primaryText="Meu Perfil"
             onClick={() => {
-              window.location.assign('/meu-perfil')
+              this.props.history.push('/meu-perfil')
             }}
             leftIcon={<i className="material-icons">account_circle</i>} />
           <Divider />

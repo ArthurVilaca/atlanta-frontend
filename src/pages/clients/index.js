@@ -39,13 +39,25 @@ class Clients extends Component {
         this.props.history.push('/clientes/' + id )
     }
 
+    delete = (id) => {
+        this.service.delete('/client/' + id)
+            .then((response) => {
+                this.loadClients();
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
     render() {
         const tableClass = classNames({
             'table': true,
             'table-striped': true,
             'table-bordered': true,
             'table-hover': true,
-            'table-condensed': true
+            'table-condensed': true,
+            'fontSize': '12px',
+            'font-size': '12px;',
         });
         return (
             <div className="content">
@@ -87,7 +99,11 @@ class Clients extends Component {
                                             }} >
                                             <i className="far fa-file"></i>
                                         </td>
-                                        <td className="clickable">
+                                        <td className="clickable"
+                                            onClick={() => {
+                                                this.delete(client.id);
+                                                // this.props.history.push('/clientes/' + client.id + '/paginas')
+                                            }} >
                                             <i className="fas fa-trash"></i>
                                         </td>
                                     </tr>
