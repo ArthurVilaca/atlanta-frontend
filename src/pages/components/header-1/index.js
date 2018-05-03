@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import './index.css';
-
 class Header1 extends Component {
     constructor(props) {
         super(props);
@@ -17,21 +15,43 @@ class Header1 extends Component {
 
     render() {
         return (
-            <div className="footer-1" style={this.state.config}
+            <nav className="navbar navbar-expand-lg navbar-light header-st-1" style={this.state.config}
                 onClick={() => {
                     this.props.editComponent(this.state.config)
                 }}>
-                <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-                    <h5 className="my-0 mr-md-auto font-weight-normal">Company name</h5>
-                    <nav className="my-2 my-md-0 mr-md-3">
-                        <a className="p-2 text-dark">Features</a>
-                        <a className="p-2 text-dark">Enterprise</a>
-                        <a className="p-2 text-dark">Support</a>
-                        <a className="p-2 text-dark">Pricing</a>
-                    </nav>
-                    <a className="btn btn-outline-primary">Sign up</a>
+                <div className="container">
+                    <a href="#" className="navbar-brand">canvas</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul className="navbar-nav ml-auto">
+                            <li className="nav-item mx-2 py-3">
+                                <a href="#" className="nav-link">HOME</a>
+                            </li>
+                            <li className="nav-item mx-2 py-3">
+                                <a href="#" className="nav-link">FEATURES</a>
+                            </li>
+                            <li className="nav-item mx-2 py-3">
+                                <a href="#" className="nav-link active">PAGES</a>
+                            </li>
+                            <li className="nav-item mx-2 py-3">
+                                <a href="#" className="nav-link">PORTFOLIO</a>
+                            </li>
+                            <li className="nav-item mx-2 py-3">
+                                <a href="#" className="nav-link">BLOG</a>
+                            </li>
+                            <li className="nav-item mx-2 py-3">
+                                <a href="#" className="nav-link">SHOP</a>
+                            </li>
+                            <li className="nav-item mx-2 py-3">
+                                <a href="#" className="nav-link">SHORTCODES</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </nav>
         );
     }
 }
