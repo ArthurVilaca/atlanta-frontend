@@ -20,15 +20,15 @@ class Contrat extends Component {
                     this.props.editComponent(this.state.config)
                 }}>
                 <div className="circle"></div>
-                <h1 className="pt-5 pb-3">GET IN TOUCH WITH US</h1>
-                <h2 className="pb-5">Still have Questions? Contact Us using the Form below</h2>
+                <h1 className="pt-5 pb-3">ENTRE EM CONTATO CONOSCO</h1>
+                <h2 className="pb-5">AINDA TEM ALGUMA DUVIDA? PREENCHA O FORMULARIO ABAIXO</h2>
                 <div className="row pt-2">
                     <div className="col-md-12 text-left">
-                        <h3>Send Us an Email</h3>
+                        {/* <h3>Send Us an Email</h3> */}
                         <form>
                             <div className="form-row">
                                 <div className="form-group col-md-4">
-                                    <label>NAME *</label>
+                                    <label>NOME *</label>
                                     <input type="text" className="form-control" id="inputName" />
                                 </div>
                                 <div className="form-group col-md-4">
@@ -36,30 +36,25 @@ class Contrat extends Component {
                                     <input type="email" className="form-control" id="inputEmail" />
                                 </div>
                                 <div className="form-group col-md-4">
-                                    <label>PHONE</label>
+                                    <label>TELEFONE</label>
                                     <input type="text" className="form-control" id="inputPhone" />
                                 </div>
                             </div>
                             <div className="form-row">
-                                <div className="form-group col-md-8">
-                                    <label>SUBJECT *</label>
+                                <div className="form-group col-md-12">
+                                    <label>ASSUNTO *</label>
                                     <input type="text" className="form-control" id="inputName" />
-                                </div>
-                                <div className="form-group col-md-4">
-                                    <label>MESSAGE *</label>
-                                    <select className="custom-select" id="FormCustomSelectPref">
-                                        <option selected>- Select One -</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label>PHONE:</label>
-                                <textarea className="form-control" id="exampleFormControlTextarea" rows="6"></textarea>
+                                <div className="form-group col-md-12">
+                                    <label>MENSAGEM *</label>
+                                    <textarea className="form-control" id="exampleFormControlTextarea" rows="6"></textarea>
+                                </div>
                             </div>
-                            <button className="btn btn-submit p-3" type="submit">SEND MASSAGE</button>
+                            <div className="form-group">
+                                <button className="btn btn-submit p-3" type="submit">ENVIAR</button>
+                            </div>
                         </form>
                     </div>
                     {/* <div className="col-md-6">

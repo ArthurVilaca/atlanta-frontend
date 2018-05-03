@@ -15,7 +15,7 @@ class Clients extends Component {
 
     render() {
         return (
-            <div style={this.state.config} className="container"
+            <div className="container" style={this.state.config}
                 onClick={() => {
                     this.props.editComponent(this.state.config)
                 }}>

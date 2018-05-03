@@ -144,8 +144,10 @@ class Pages extends Component {
     openPage(id) {
         if(this.state.user.user_type === "D") {
             this.props.history.push('/clientes/' + this.props.match.params.id + '/paginas/' + id + '/editar');
+            window.location.reload();
         } else if(this.state.user.user_type === "C") {
             this.props.history.push('/paginas/' + id + '/editar');
+            window.location.reload();
         }
     }
 

@@ -26,7 +26,7 @@ class Header4 extends Component {
                 </nav>
                 <nav className="navbar navbar-expand-lg navbar-light header-st-4">
                     <div className="container">
-                        <a href="#" className="navbar-brand d-xl-none d-lg-none">canvas</a>
+                        <a href="#" className="navbar-brand d-xl-none d-lg-none">HTTPLAY</a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
@@ -37,28 +37,10 @@ class Header4 extends Component {
                                     <a href="#" className="nav-link active">HOME</a>
                                 </li>
                                 <li className="nav-item mx-2 py-4">
-                                    <a href="#" className="nav-link">FEATURES</a>
+                                    <a href="#" className="nav-link">IMAGENS</a>
                                 </li>
                                 <li className="nav-item mx-2 py-4">
-                                    <a href="#" className="nav-link">PAGES</a>
-                                </li>
-                                <li className="nav-item mx-2 py-4">
-                                    <a href="#" className="nav-link">PORTFOLIO</a>
-                                </li>
-                                <li className="nav-item mx-2 py-4">
-                                    <a href="#" className="nav-link">BLOG</a>
-                                </li>
-                                <li className="nav-item mx-2 py-4">
-                                    <a href="#" className="nav-link">SHOP</a>
-                                </li>
-                                <li className="nav-item mx-2 py-4">
-                                    <a href="#" className="nav-link">SHORTCODES</a>
-                                </li>
-                            </ul>
-
-                            <ul className="navbar-nav ml-auto">
-                                <li className="nav-item mx-2 py-4">
-                                    <a href="#" className="nav-link"><i className="fa fa-search" aria-hidden="true"></i></a>
+                                    <a href="#" className="nav-link">CONTATO</a>
                                 </li>
                             </ul>
                         </div>

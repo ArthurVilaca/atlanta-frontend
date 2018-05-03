@@ -20,7 +20,7 @@ class Header1 extends Component {
                     this.props.editComponent(this.state.config)
                 }}>
                 <div className="container">
-                    <a href="#" className="navbar-brand">canvas</a>
+                    <a href="#" className="navbar-brand">Httplay</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -31,22 +31,13 @@ class Header1 extends Component {
                                 <a href="#" className="nav-link">HOME</a>
                             </li>
                             <li className="nav-item mx-2 py-3">
-                                <a href="#" className="nav-link">FEATURES</a>
+                                <a href="#" className="nav-link">SOBRE</a>
                             </li>
                             <li className="nav-item mx-2 py-3">
-                                <a href="#" className="nav-link active">PAGES</a>
+                                <a href="#" className="nav-link active">CONTATO</a>
                             </li>
                             <li className="nav-item mx-2 py-3">
-                                <a href="#" className="nav-link">PORTFOLIO</a>
-                            </li>
-                            <li className="nav-item mx-2 py-3">
-                                <a href="#" className="nav-link">BLOG</a>
-                            </li>
-                            <li className="nav-item mx-2 py-3">
-                                <a href="#" className="nav-link">SHOP</a>
-                            </li>
-                            <li className="nav-item mx-2 py-3">
-                                <a href="#" className="nav-link">SHORTCODES</a>
+                                <a href="#" className="nav-link">IMAGENS</a>
                             </li>
                         </ul>
                     </div>

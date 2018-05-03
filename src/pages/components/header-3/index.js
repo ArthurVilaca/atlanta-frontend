@@ -30,52 +30,24 @@ class Header3 extends Component {
                             <li className="nav-item px-4 py-4 active">
                                 <a href="#">
                                     <span className="nav-link">HOME</span>
-                                    <span className="nav-link-description">Lets Start</span>
+                                    <span className="nav-link-description">Inicio</span>
                                 </a>
                             </li>
                             <li className="separator"></li>
                             <li className="nav-item px-4 py-4">
                                 <a href="#">
-                                    <span className="nav-link">FEATURES</span>
-                                    <span className="nav-link-description">Out Of The Box</span>
+                                    <span className="nav-link">IMAGENS</span>
+                                    <span className="nav-link-description">Galeria</span>
                                 </a>
                             </li>
                             <li className="separator"></li>
                             <li className="nav-item px-4 py-4">
                                 <a href="#">
-                                    <span className="nav-link">PAGES</span>
-                                    <span className="nav-link-description">Templates</span>
+                                    <span className="nav-link">CONTATO</span>
+                                    <span className="nav-link-description">Email</span>
                                 </a>
                             </li>
-                            <li className="separator"></li>
-                            <li className="nav-item px-4 py-4">
-                                <a href="#">
-                                    <span className="nav-link">PORTFOLIO</span>
-                                    <span className="nav-link-description">Awesome Works</span>
-                                </a>
-                            </li>
-                            <li className="separator"></li>
-                            <li className="nav-item px-4 py-4">
-                                <a href="#">
-                                    <span className="nav-link">BLOG</span>
-                                    <span className="nav-link-description">Latest News</span>
-                                </a>
-                            </li>
-                            <li className="separator"></li>
-                            <li className="nav-item px-4 py-4">
-                                <a href="#">
-                                    <span className="nav-link">SHOP</span>
-                                    <span className="nav-link-description">Buy Now</span>
-                                </a>
-                            </li>
-                            <li className="separator"></li>
-                            <li className="nav-item px-4 py-4">
-                                <a href="#">
-                                    <span className="nav-link">SHORTCODES</span>
-                                    <span className="nav-link-description">Amazing Elements</span>
-                                </a>
-                            </li>
-                            <li className="separator"></li>
+                            {/* <li className="separator"></li>
                             <li className="px-4 my-auto">
                                 <a href="#" className="nav-link"><i className="fa fa-search" aria-hidden="true"></i></a>
                             </li>
@@ -86,7 +58,7 @@ class Header3 extends Component {
                                         <span className="badge">5</span>
                                     </div>
                                 </a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>

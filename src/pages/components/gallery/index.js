@@ -19,7 +19,7 @@ class Gallery extends Component {
                 onClick={() => {
                     this.props.editComponent(this.state.config)
                 }}>
-                <h1 className="pt-5 pb-3">OUR LATEST WORKS</h1>
+                <h1 className="pt-5 pb-3">ALGUNS TRABALHOS</h1>
                 <hr/>
                 <div className="row pt-5">
                     <div className="col-md-3">

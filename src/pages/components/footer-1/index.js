@@ -22,7 +22,7 @@ class Footer1 extends Component {
                 <div className="container py-4">
                     <div className="row py-3">
                         <div className="col-md-6 text-left">
-                            <p className="pb-2">Copyrights © 2014 All Rights Reserved by Canvas Inc</p>
+                            <p className="pb-2">Copyrights © 2018 All Rights Reserved by Httplay</p>
                             <p className="pb-2"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></p>
                         </div>
                         <div className="col-md-6 text-right">
@@ -36,9 +36,8 @@ class Footer1 extends Component {
                                 <a className="px-2 linkedin" href="#" target="_blank"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                             </p>
                             <p className="pb-2">
-                                <a className="px-1 email" href="#" target="_blank"><i className="fa fa-envelope-o px-1" aria-hidden="true"></i>info@canvas.com</a> ·
+                                <a className="px-1 email" href="#" target="_blank"><i className="fa fa-envelope-o px-1" aria-hidden="true"></i>contato@httplay.com.br</a> ·
                                 <a className="px-1 headphones" href="#" target="_blank"><i className="fa fa-headphones px-1" aria-hidden="true"></i>+91-11-6541-6369</a> ·
-                                <a className="px-1 skype" href="#" target="_blank"><i className="fa fa-skype px-1" aria-hidden="true"></i>CanvasOnSkype</a>
                             </p>
                         </div>
                     </div>
