@@ -20,8 +20,8 @@ class Contrat extends Component {
                     this.props.editComponent(this.state.config)
                 }}>
                 <div className="circle"></div>
-                <h1 className="pt-5 pb-3">ENTRE EM CONTATO CONOSCO</h1>
-                <h2 className="pb-5">AINDA TEM ALGUMA DUVIDA? PREENCHA O FORMULARIO ABAIXO</h2>
+                <h1 className="pt-5 pb-3">{this.state.text1}</h1>
+                <h2 className="pb-5">{this.state.text2}</h2>
                 <div className="row pt-2">
                     <div className="col-md-12 text-left">
                         {/* <h3>Send Us an Email</h3> */}
