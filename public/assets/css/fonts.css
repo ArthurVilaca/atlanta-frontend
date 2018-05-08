@@ -1,0 +1,55 @@
+@font-face {
+font-family: 'OpenSans Bold';
+font-style: normal;
+font-weight: normal;
+src: local('OpenSans Bold'), url('fonts/OpenSans-Bold.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Raleway Bold';
+font-style: normal;
+font-weight: normal;
+src: local('Raleway Bold'), url('fonts/Raleway-Bold.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Raleway Regular';
+font-style: normal;
+font-weight: normal;
+src: local('Raleway Regular'), url('fonts/Raleway-Regular.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Raleway Light';
+font-style: normal;
+font-weight: normal;
+src: local('Raleway Light'), url('fonts/Raleway-Light.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Lato Regular';
+font-style: normal;
+font-weight: normal;
+src: local('Lato Regular'), url('fonts/Lato-Regular.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Lato Light';
+font-style: normal;
+font-weight: normal;
+src: local('Lato Light'), url('fonts/Lato-Light.woff') format('woff');
+}
+
+@font-face {
+font-family: 'Lato Bold';
+font-style: normal;
+font-weight: normal;
+src: local('Lato Bold'), url('fonts/Lato-Bold.woff') format('woff');
+}
+
+@font-face {
+font-family: 'CreteRound Italic';
+font-style: normal;
+font-weight: normal;
+src: local('CreteRound Italic'), url('fonts/CreteRound-Italic.woff') format('woff');
+}

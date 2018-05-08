@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
-import './index.css';
-
 class Footer1 extends Component {
     constructor(props) {
         super(props);
@@ -17,19 +15,33 @@ class Footer1 extends Component {
 
     render() {
         return (
-            <div className="footer-1" style={this.state.config}
+            <div className="footer" style={this.state.config}
                 onClick={() => {
                     this.props.editComponent(this.state.config)
                 }}>
-                <footer className="text-muted">
-                    <div className="container">
-                        <p className="float-right">
-                        <a>Back to top</a>
-                        </p>
-                        <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
-                        <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+                <div className="container py-4">
+                    <div className="row py-3">
+                        <div className="col-md-6 text-left">
+                            <p className="pb-2">Copyrights © 2018 All Rights Reserved by Httplay</p>
+                            <p className="pb-2"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></p>
+                        </div>
+                        <div className="col-md-6 text-right">
+                            <p className="pb-2">
+                                <a className="px-2 facebook" href="#" target="_blank"><i className="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a className="px-2 twitter" href="#" target="_blank"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a className="px-2 google" href="#" target="_blank"><i className="fa fa-google-plus" aria-hidden="true"></i></a>
+                                <a className="px-2 vimeo" href="#" target="_blank"><i className="fa fa-vimeo-square" aria-hidden="true"></i></a>
+                                <a className="px-2 pinterest" href="#" target="_blank"><i className="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                                <a className="px-2 github" href="#" target="_blank"><i className="fa fa-github" aria-hidden="true"></i></a>
+                                <a className="px-2 linkedin" href="#" target="_blank"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </p>
+                            <p className="pb-2">
+                                <a className="px-1 email" href="#" target="_blank"><i className="fa fa-envelope-o px-1" aria-hidden="true"></i>contato@httplay.com.br</a> ·
+                                <a className="px-1 headphones" href="#" target="_blank"><i className="fa fa-headphones px-1" aria-hidden="true"></i>+91-11-6541-6369</a> ·
+                            </p>
+                        </div>
                     </div>
-                </footer>
+                </div>
             </div>
         );
     }
